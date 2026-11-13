@@ -218,3 +218,29 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Raw data stays local; document sources and provenance in Git.
+/data/*
+!/data/data.md
+!/data/download-manifest.json
+
+# Local student information and email correspondence
+/student_details.txt
+/final_Submission_Dates.png
+/student-handbook-2026-27.docx
+COMP1890_Spatial_Data_Science/
+
+# Local Word documents and templates (Markdown is version controlled)
+*.[dD][oO][cC]
+*.[dD][oO][cC][xX]
+*.[dD][oO][cC][mM]
+*.[dD][oO][tT]
+*.[dD][oO][tT][xX]
+*.[dD][oO][tT][mM]
+
+# Operating system metadata and temporary Office files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*Zone.Identifier
+~$*

@@ -1,0 +1,119 @@
+{
+  "source_page": "https://www.gov.uk/government/statistical-data-sets/road-safety-open-data",
+  "files": [
+    {
+      "file": "dft-road-casualty-statistics-collision-2022.csv",
+      "url": "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-2022.csv",
+      "bytes": 20116923,
+      "sha256": "b0a704f7826f53774472254cf0dd5c0d2ec3fef006622a10a2a15f31571d4e7a",
+      "downloaded_utc": "2026-11-13T06:21:51.524769+00:00",
+      "checks": {
+        "columns": 44,
+        "id_fields": [
+          "collision_index"
+        ]
+      }
+    },
+    {
+      "file": "dft-road-casualty-statistics-casualty-2022.csv",
+      "url": "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-2022.csv",
+      "bytes": 11242293,
+      "sha256": "8f89af8529bbbc7fe92ea65b7e5a2773e0b7f4d4d5ae903338dbd69499900730",
+      "downloaded_utc": "2026-11-13T06:21:54.689565+00:00",
+      "checks": {
+        "columns": 24,
+        "id_fields": [
+          "collision_index"
+        ]
+      }
+    },
+    {
+      "file": "dft-road-casualty-statistics-collision-2023.csv",
+      "url": "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-2023.csv",
+      "bytes": 19790001,
+      "sha256": "0c01d4194b4e4c5e1b242a43c633bc30e22cf16e8becca698e63a37f71410cfa",
+      "downloaded_utc": "2026-11-13T06:22:05.353143+00:00",
+      "checks": {
+        "columns": 44,
+        "id_fields": [
+          "collision_index"
+        ]
+      }
+    },
+    {
+      "file": "dft-road-casualty-statistics-casualty-2023.csv",
+      "url": "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-2023.csv",
+      "bytes": 11012867,
+      "sha256": "83e509384d877535bcd566772d029a1408568114fe51a5ed66c89b677b94a46e",
+      "downloaded_utc": "2026-11-13T06:22:15.407006+00:00",
+      "checks": {
+        "columns": 24,
+        "id_fields": [
+          "collision_index"
+        ]
+      }
+    },
+    {
+      "file": "dft-road-casualty-statistics-collision-2024.csv",
+      "url": "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-2024.csv",
+      "bytes": 19208488,
+      "sha256": "32a78f4662e309160f37b1ea2b82017e85e07b62a022d680da7140e88706a17c",
+      "downloaded_utc": "2026-11-13T06:22:26.241129+00:00",
+      "checks": {
+        "columns": 44,
+        "id_fields": [
+          "collision_index"
+        ]
+      }
+    },
+    {
+      "file": "dft-road-casualty-statistics-casualty-2024.csv",
+      "url": "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-2024.csv",
+      "bytes": 10439101,
+      "sha256": "838aad605a6ac638973f09248ef3a730dbd1de30ac8fc79dfd536e7d4a47b0f8",
+      "downloaded_utc": "2026-11-13T06:22:32.307109+00:00",
+      "checks": {
+        "columns": 24,
+        "id_fields": [
+          "collision_index"
+        ]
+      }
+    },
+    {
+      "file": "dft-road-casualty-statistics-collision-2025.csv",
+      "url": "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-2025.csv",
+      "bytes": 19349153,
+      "sha256": "e699c19bdb82e47e449b6f3381ac87631865f6a31cef118c9955ba80ca870e2b",
+      "downloaded_utc": "2026-11-13T06:22:44.247260+00:00",
+      "checks": {
+        "columns": 44,
+        "id_fields": [
+          "collision_index"
+        ]
+      }
+    },
+    {
+      "file": "dft-road-casualty-statistics-casualty-2025.csv",
+      "url": "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-2025.csv",
+      "bytes": 10318523,
+      "sha256": "b343039991f63f526bbcac0a5e6102e3a6e4c0b65d077e3ae37dbd53d1a7319a",
+      "downloaded_utc": "2026-11-13T06:22:51.915494+00:00",
+      "checks": {
+        "columns": 24,
+        "id_fields": [
+          "collision_index"
+        ]
+      }
+    },
+    {
+      "file": "dft-road-casualty-statistics-road-safety-open-dataset-data-guide-2025.xlsx",
+      "url": "https://assets.publishing.service.gov.uk/media/6ab2a71d997a4b2950cced58/dft-road-casualty-statistics-road-safety-open-dataset-data-guide-2025.xlsx",
+      "bytes": 85112,
+      "sha256": "51b08606ef3dad1ae5d4c8726241b022fc8e4bbdc910ef0e5cc2fb92b054fc12",
+      "downloaded_utc": "2026-11-13T06:22:52.420444+00:00",
+      "checks": {
+        "xlsx_integrity": "passed"
+      }
+    }
+  ]
+}
