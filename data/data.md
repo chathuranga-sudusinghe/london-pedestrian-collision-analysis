@@ -65,7 +65,7 @@ Recorded London codes, Heathrow, blanks, the predates-code category and unrecogn
 
 [DfT methodology](https://www.gov.uk/government/statistics/matching-stats19-collision-data-to-a-road-network-feasibility/matching-stats19-collisions-to-a-road-network-feasibility) and the [government CRS register](https://www.gov.uk/government/publications/uk-geospatial-data-standards-register/national-geospatial-data-standards-register) support British National Grid / EPSG:27700 for grid coordinates, with sources checked on 14 November 2026. This documentary reference does not validate individual points. The supplied guide does not specify the longitude/latitude datum, so cross-representation checks remain pending.
 
-The saved merged-notebook export reports 74,682 rows and the candidate CSV has 38 columns. Both `data/derived/pedestrian_collision_candidates.csv` and `data/derived/preparation_log.csv` exist and remain ignored by Git. QGIS and authoritative boundaries will support final geographic validation before submission.
+The saved merged-notebook export reports 74,682 rows and the candidate CSV has 38 columns. Both `data/derived/pedestrian_collision_candidates.csv` and `data/derived/preparation_log.csv` exist and remain ignored by Git. The documented boundary checks and Python maps support geographic validation; browser inspection provides supplementary evidence.
 
 ## Candidate boundary input
 
@@ -79,7 +79,7 @@ The manifest now records the stable download URL and resolved host/path without 
 
 ## Spatial-validation results and status
 
-[02_spatial_validation.ipynb](../notebooks/02_spatial_validation.ipynb) has nine saved code-cell execution counts in sequence, 1–9, with no saved errors. The corrected diagnostic summaries and nine-file export completed; execution counts alone do not independently establish a fresh-kernel run. It audits all national candidates against the 33 London districts, retaining invalid-coordinate and ambiguous cases rather than assigning them automatically. Its CSV audits and GeoPackage exports are validation evidence, not a final cleaned borough dataset.
+[02_spatial_validation.ipynb](../notebooks/02_spatial_validation.ipynb) has ten saved code-cell execution counts in sequence, 1–10, with no saved errors, including the Python inspection maps. The latest export check retained existing files and reported matching input hashes; it did not regenerate the nine-file result set. It audits all national candidates against the 33 London districts, retaining invalid-coordinate and ambiguous cases rather than assigning them automatically. Its CSV audits and GeoPackage exports are validation evidence, not a final cleaned borough dataset.
 
 The geographic source datum remains unresolved, so coordinate-representation agreement is not enabled by default.
 
@@ -91,10 +91,16 @@ The saved diagnostics report 182 London district differences between shared-edge
 
 The diagnostic code retrieves `local_authority_highway` and `local_authority_highway_current` from the original collision CSVs, verifying manifest hashes, unique keys, year consistency, join coverage and recorded-district agreement. It measures point-to-recorded-district distance in EPSG:27700 metres, classifies pair topology and summarises by year and directed borough pair without correcting records or applying a distance cutoff. The guide describes the current highway field as derived from recorded locations, so agreement is not independent evidence of positional accuracy.
 
-Keep longitude/latitude agreement explicitly unperformed while using the documented grid coordinates for analysis. December 2024 remains a candidate fixed reference geography; the inspected official history summaries do not establish unchanged London polygons throughout 2022–2025, and ward changes must be distinguished from external borough changes: [R15–R16](../references.md#r15). Temporal suitability for the selected borough, user-led QGIS inspection and final borough/period selection remain unresolved.
+Keep longitude/latitude agreement explicitly unperformed while using the documented grid coordinates for analysis. December 2024 remains a candidate fixed reference geography; the inspected official history summaries do not establish unchanged London polygons throughout 2022–2025, and ward changes must be distinguished from external borough changes: [R15–R16](../references.md#r15). Temporal suitability for the selected borough and final borough/period selection remain unresolved; final report-map layout and attribution still require review.
 
 ## Attribution and reuse
 
 Cite the DfT source page, the relevant files, the data guide and the access date in the report. The source page links to the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/); check applicable dataset terms and attribution before redistributing inputs. Boundary data will need their own source and licence record.
 
 Acquisition-time `not_checked` fields in the manifest describe the download stage; notebook 02 provides the later geometry and code-reconciliation evidence. Reproduction of ignored inputs is described in the [README](../README.md#reproduce-the-ignored-inputs).
+
+## Supplementary browser inspection
+
+Mapshaper displayed 33 boundary polygons and 17,613 validation points. The inspected records were `2022010376283` (matching Lambeth codes) and `2022010354125` (recorded Westminster, geometric Brent), consistent with the exported audit. The latter record's distance to the recorded polygon is approximately 2.16 m in the diagnostic CSV; browser inspection does not independently verify its real-world location.
+
+Eight browser screenshots are preserved locally in ignored `data/screenshots/`; notebook execution does not require them. No QGIS inspection was performed or is required by the chosen workflow. Python example maps and their evidence table are saved in notebook 02; existing exports are unchanged. Their distances to the recorded polygons are 0 m for the matching Lambeth example and approximately 2.16 m for the Westminster/Brent example; the first is an interior-point polygon distance, not a boundary distance.

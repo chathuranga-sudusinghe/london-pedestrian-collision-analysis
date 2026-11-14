@@ -140,3 +140,11 @@ The supplied slide text and hyperlinks were inspected on 14 November 2026; image
 - **Sources:** [Code History Database guidance](https://www.ons.gov.uk/methodology/geography/geographicalproducts/namescodesandlookups/codehistorydatabasechd), [December 2025 database metadata](https://www.data.gov.uk/dataset/4ec2169f-1a72-4c2d-be60-a74174902593/code-history-database-december-2025-for-the-uk) and [mid-2024 population estimates methods guide](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/methodologies/populationestimatesforenglandandwalesmid2022methodsguide), section 13.
 - **Access:** guidance and metadata inspected 14 November 2026; the history database itself was not downloaded or queried.
 - **Use/status:** **used** to identify official history evidence and its limitations. The methods guide lists four 2023 reorganisations outside London, and the December 2025 metadata does not list London boroughs among that release's updated geography types; neither establishes that all London polygons were unchanged throughout 2022–2025. Complete a focused history check for the selected borough before final filtering; December 2024 remains a candidate fixed reference geography.
+
+<a id="r17"></a>
+### R17 — Mapshaper browser inspection
+
+- **Author:** Mapshaper contributors; rolling software documentation.
+- **Sources:** [GeoPackage support](https://mapshaper.org/docs/formats/geopackage.html) and [attribute inspection](https://mapshaper.org/docs/reference.html#-inspect).
+- **Access:** documentation and browser workflow inspected 14 November 2026; deployed application version not recorded.
+- **Use/status:** **used** for supplementary rendering and attribute inspection of the exported GeoPackage. Two example records were checked against the exported audit; the browser check does not independently validate coordinate accuracy. Screenshots are local evidence, not notebook dependencies; Python remains the primary analytical workflow.
