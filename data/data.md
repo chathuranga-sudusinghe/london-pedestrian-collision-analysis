@@ -8,7 +8,7 @@ See the [README research framework](../README.md#research-framework) for the res
 
 [Department for Transport (DfT): Road safety open data](https://www.gov.uk/government/statistical-data-sets/road-safety-open-data). Source page checked on 13 November 2026.
 
-The source covers police-reported personal injury collisions on public roads in Great Britain. It does not represent every collision or every pedestrian injury. The DfT page identifies 2025 as the latest full year of final validated data; the candidate period still requires record-level completeness and comparability checks.
+The source covers police-reported personal injury collisions on public roads in Great Britain. It does not represent every collision or every pedestrian injury. The DfT page identifies 2025 as the latest full year of final validated data; the approved 2022–2025 period still requires explicit reporting-comparability limitations alongside record-level completeness checks.
 
 ## Downloads
 
@@ -53,7 +53,7 @@ Originals remain unchanged and derived outputs are stored separately with prepar
 
 **Saved London quality results:** the evaluated date, ID-composition, district and grid/longitude-latitude range flags are zero for the recorded-London subset. Its repeated-grid flags affect 16 records within years and 66 in the pooled-national comparison, with all events retained. These counts describe flagged records rather than distinct location pairs and do not establish positional accuracy.
 
-**Remaining spatial checks:** preparation-stage spatial flags remain `not_checked`; notebook 02 supplies later London membership evidence, while coordinate-representation agreement remains unperformed. The final borough and period, and suitability of the candidate December 2024 boundary vintage, must be agreed before final spatial filtering. The final hotspot method must align with lecture material.
+**Remaining spatial checks:** preparation-stage spatial flags remain `not_checked`; notebook 02 supplies later London membership evidence, while coordinate-representation agreement remains unperformed. Croydon and 2022–2025 are approved using the December 2024 footprint as fixed geography; notebook 03 applies that study frame without claiming historically identical boundaries. The final hotspot method must align with lecture material.
 
 ## Preparation rules and derived candidates
 
@@ -91,7 +91,15 @@ The saved diagnostics report 182 London district differences between shared-edge
 
 The diagnostic code retrieves `local_authority_highway` and `local_authority_highway_current` from the original collision CSVs, verifying manifest hashes, unique keys, year consistency, join coverage and recorded-district agreement. It measures point-to-recorded-district distance in EPSG:27700 metres, classifies pair topology and summarises by year and directed borough pair without correcting records or applying a distance cutoff. The guide describes the current highway field as derived from recorded locations, so agreement is not independent evidence of positional accuracy.
 
-Keep longitude/latitude agreement explicitly unperformed while using the documented grid coordinates for analysis. December 2024 remains a candidate fixed reference geography; the inspected official history summaries do not establish unchanged London polygons throughout 2022–2025, and ward changes must be distinguished from external borough changes: [R15–R16](../references.md#r15). Temporal suitability for the selected borough and final borough/period selection remain unresolved; final report-map layout and attribution still require review.
+Keep longitude/latitude agreement explicitly unperformed while using the documented grid coordinates for analysis. December 2024 is the approved fixed reference geography for Croydon; the inspected official history summaries do not establish unchanged London polygons throughout 2022–2025, and ward changes must be distinguished from external borough changes: [R15–R16](../references.md#r15). Reporting comparability and final report-map layout and attribution still require review. The fixed-footprint design does not depend on proving that every historical boundary was identical.
+
+## Approved Croydon study frame
+
+[03_croydon_grid_comparison.ipynb](../notebooks/03_croydon_grid_comparison.ipynb) has six saved code cells with sequential execution counts 1–6 and no saved errors; both saved figures have been visually inspected. It independently verifies the saved candidate and validation evidence, selects unique interior Croydon events for 2022–2025, and checks the saved annual baseline of 190 / 200 / 180 / 222 events. The saved selection reproduces 792 unique collisions, all strictly inside the footprint, with annual counts matching the baseline. Original records and historical validation metadata are preserved; no selected-data file or grid export is generated.
+
+The saved 100 m / 250 m / 500 m grids retain 9,006 / 1,520 / 415 cells and count all 792 events at each size. Zero-count shares are 94.1% / 76.9% / 55.4%, while partial cells contain 20 / 41 / 74 events. These are descriptive results, and sequential execution counts alone do not independently establish a fresh-kernel run.
+
+The descriptive comparison uses 100 m, 250 m and 500 m grids anchored at British National Grid (0, 0), retains all positive-area footprint intersections and zero-count cells, and assigns each collision exactly once. Partial-cell areas and their event totals are reported to expose unequal support; no final grid or local statistic is selected. Reporting changes under the 2024 STATS19 specification remain a limitation to assess ([R19](../references.md#r19)); a serious/slight reclassification alone does not change eligibility when all injury severities are included, but this does not establish complete or constant reporting.
 
 ## Attribution and reuse
 
