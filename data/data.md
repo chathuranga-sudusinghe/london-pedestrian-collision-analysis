@@ -41,7 +41,7 @@ The original inputs are in the repository-root `data/` directory. The notebook i
 
 Keep the `data/` and `notebooks/` folders together when packaging the project. Alternatively, configure an external input directory using `COMP1890_DATA_DIR` or the notebook’s `DATA_DIR` setting. Do not require a particular username, repository name or absolute filesystem location.
 
-Originals remain unchanged and derived outputs are stored separately with preparation flags and a log. The original December 2024 ONS UK BFE boundary GeoPackage is preserved; its geometry and temporal suitability still require validation.
+Originals remain unchanged and derived outputs are stored separately with preparation flags and a log. The original December 2024 ONS UK BFE boundary GeoPackage is preserved; notebook 02 records geometry validation, while temporal suitability remains unresolved.
 
 ## Verification status
 
@@ -53,7 +53,7 @@ Originals remain unchanged and derived outputs are stored separately with prepar
 
 **Saved London quality results:** the evaluated date, ID-composition, district and grid/longitude-latitude range flags are zero for the recorded-London subset. Its repeated-grid flags affect 16 records within years and 66 in the pooled-national comparison, with all events retained. These counts describe flagged records rather than distinct location pairs and do not establish positional accuracy.
 
-**Remaining spatial checks:** London extents, coordinate-representation agreement and borough membership remain `not_checked`. The final borough and period, and suitability of the candidate December 2024 boundary vintage, must be agreed before final spatial filtering. The final hotspot method must align with lecture material.
+**Remaining spatial checks:** preparation-stage spatial flags remain `not_checked`; notebook 02 supplies later London membership evidence, while coordinate-representation agreement remains unperformed. The final borough and period, and suitability of the candidate December 2024 boundary vintage, must be agreed before final spatial filtering. The final hotspot method must align with lecture material.
 
 ## Preparation rules and derived candidates
 
@@ -69,7 +69,7 @@ The saved merged-notebook export reports 74,682 rows and the candidate CSV has 3
 
 ## Candidate boundary input
 
-The [ONS December 2024 UK BFE district boundaries](../references.md#r05) are the current candidate for spatial membership checks. The preserved file contains layer `LAD_DEC_24_UK_BFE`, a MULTIPOLYGON geometry column, EPSG:27700 metadata and 361 UK features, including 33 unique London district codes. Polygon validity, guide-code reconciliation and temporal suitability still require the spatial-validation run.
+The [ONS December 2024 UK BFE district boundaries](../references.md#r05) are the current candidate for spatial membership checks. The preserved file contains layer `LAD_DEC_24_UK_BFE`, a MULTIPOLYGON geometry column, EPSG:27700 metadata and 361 UK features, including 33 unique London district codes. The saved spatial-validation run passes polygon-validity and guide-code reconciliation checks; temporal suitability remains unresolved.
 
 Full-resolution allocation and licensing guidance are recorded in the [reference register](../references.md#r04).
 
@@ -79,13 +79,19 @@ The manifest now records the stable download URL and resolved host/path without 
 
 ## Spatial-validation results and status
 
-[02_spatial_validation.ipynb](../notebooks/02_spatial_validation.ipynb) has a saved eight-cell execution without errors; its export step skipped existing files. It audits all national candidates against the 33 London districts, retaining invalid-coordinate and ambiguous cases rather than assigning them automatically. Its CSV audits and GeoPackage exports are validation evidence, not a final cleaned borough dataset.
+[02_spatial_validation.ipynb](../notebooks/02_spatial_validation.ipynb) has nine saved code-cell execution counts in sequence, 1–9, with no saved errors. The corrected diagnostic summaries and nine-file export completed; execution counts alone do not independently establish a fresh-kernel run. It audits all national candidates against the 33 London districts, retaining invalid-coordinate and ambiguous cases rather than assigning them automatically. Its CSV audits and GeoPackage exports are validation evidence, not a final cleaned borough dataset.
 
 The geographic source datum remains unresolved, so coordinate-representation agreement is not enabled by default.
 
- Polygon-validity and district-reconciliation safeguards pass, with no positive-area overlaps and 17,613 unique London interior memberships. The 199 recorded/geometric code differences comprise 182 London district differences and 17 Heathrow-coded events inside Hillingdon.
+Polygon-validity and district-reconciliation safeguards pass, with no positive-area overlaps and 17,613 unique London interior memberships. The 199 recorded/geometric code differences comprise 182 London district differences and 17 Heathrow-coded events inside Hillingdon.
 
-The revised export cell additionally reports matching, mismatching or unverifiable input provenance; execution of this revision is pending. Its seven preceding analysis/map cells and their saved outputs are unchanged. Temporal suitability, QGIS review and final borough/period selection remain unresolved.
+All nine validation files exist in `data/derived/spatial_validation_closure/`, including `district_difference_diagnostics.csv`, `district_differences_by_year.csv` and `district_differences_by_pair.csv`. The exported `validation_run.json` records seven input hashes: boundary, guide, candidates and four annual collision files. Earlier six-file exports remain protected in `data/derived/spatial_validation/`.
+
+The saved diagnostics report 182 London district differences between shared-edge borough pairs, with distances of approximately 0.015–42.66 m to the recorded district polygons. All 182 current highway codes match geometric membership, while all 182 original highway codes differ; exported yearly status counts reconcile with collision totals. These comparisons do not independently validate positional accuracy or establish the cause of the differences.
+
+The diagnostic code retrieves `local_authority_highway` and `local_authority_highway_current` from the original collision CSVs, verifying manifest hashes, unique keys, year consistency, join coverage and recorded-district agreement. It measures point-to-recorded-district distance in EPSG:27700 metres, classifies pair topology and summarises by year and directed borough pair without correcting records or applying a distance cutoff. The guide describes the current highway field as derived from recorded locations, so agreement is not independent evidence of positional accuracy.
+
+Keep longitude/latitude agreement explicitly unperformed while using the documented grid coordinates for analysis. December 2024 remains a candidate fixed reference geography; the inspected official history summaries do not establish unchanged London polygons throughout 2022–2025, and ward changes must be distinguished from external borough changes: [R15–R16](../references.md#r15). Temporal suitability for the selected borough, user-led QGIS inspection and final borough/period selection remain unresolved.
 
 ## Attribution and reuse
 
