@@ -8,7 +8,18 @@ The borough and final study period remain undecided; 2022–2025 is the candidat
 
 Grid-based Getis–Ord Gi* analysis with a small sensitivity check remains provisional, pending lecture alignment and data inspection. No predictive model training is planned.
 
-The initial inspection notebook is prepared but unexecuted. Record counts, joins, coordinate quality and borough comparisons have not been validated. Confirm module-specific AI guidance before further implementation.
+The reorganised notebook has been rerun, with saved outputs for all 11 code cells and four compact EDA figures. Sections 1.3–1.4 report national file, identifier and date checks; section 1.5 documents columns; sections 1.6–1.10 report selection safeguards and national/London EDA. The saved run shows matching collision-ID sets, no pedestrian-code disagreements and 17,596 qualifying London collisions across 2022–2025. All London coordinate pairs pass the broad screen, but geographic accuracy and borough assignment remain unverified. The final borough and period, authoritative boundaries and hotspot method still require decisions. Confirm module-specific AI guidance before further implementation.
+
+
+## Planned QGIS work before submission
+
+**Decision:** use QGIS later in the project, before the final PDF submission. This work is planned and has not yet been completed. Schedule it after the study borough and period are agreed and suitable spatial layers and analysis outputs are available.
+
+- Inspect the selected borough boundary, coordinate reference systems and alignment of collision and analysis layers.
+- Prepare final map layouts from verified analysis outputs.
+- Capture selected screenshots of the actual QGIS workflow and results for the report's Implementation and Results and Discussions sections, with concise captions explaining their relevance.
+
+Record the QGIS version and the steps actually performed. Use project-relative layer paths when saving the QGIS project. Decide the exact screenshots once the relevant work is complete, keeping the report focused and within its submission limits.
 
 ## Project structure
 
@@ -59,7 +70,7 @@ Select **Python (London pedestrian collisions)** as the notebook kernel. In a no
 
 Open `01_data_inspection.ipynb`, check the input directory, and run cells in order. The same project files work on Windows, macOS and Linux with an appropriate Python environment; no WSL-specific paths are required.
 
-Loading all eight CSVs into memory uses more RAM than their approximately 116 MiB disk size. The notebook displays tables without modifying original files or writing derived datasets. Save the notebook after reviewing actual outputs. Execution remains pending; only static notebook checks have passed.
+The profile reads selected fields one annual file at a time. EDA preparation reads one annual collision/casualty pair at a time and retains plotting arrays, summaries and usable London points; memory use exceeds the selected input columns alone. The notebook does not modify original files or write derived datasets. The revised figures use smaller dimensions and 100 dpi. The latest saved run contains sequential execution counts 12–22 and all four figures have been visually inspected. This wording update preserves code, execution counts and outputs without another run. Sequential counts document execution order; they do not by themselves establish that the kernel was freshly restarted. For future analytical changes, rerun affected cells in order and save reviewed outputs.
 
 ## Version control
 
