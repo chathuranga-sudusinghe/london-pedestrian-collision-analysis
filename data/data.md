@@ -79,7 +79,7 @@ The manifest now records the stable download URL and resolved host/path without 
 
 ## Spatial-validation results and status
 
-[02_spatial_validation.ipynb](../notebooks/02_spatial_validation.ipynb) has ten saved code-cell execution counts in sequence, 1–10, with no saved errors, including the Python inspection maps. The latest export check retained existing files and reported matching input hashes; it did not regenerate the nine-file result set. It audits all national candidates against the 33 London districts, retaining invalid-coordinate and ambiguous cases rather than assigning them automatically. Its CSV audits and GeoPackage exports are validation evidence, not a final cleaned borough dataset.
+[02_spatial_validation.ipynb](../notebooks/02_spatial_validation.ipynb) has ten saved code cells with sequential execution counts 11–20 and no saved errors, including both Python inspection maps and the corrected second-map borough identifiers. The previously obscured central B-labels are readable in the visually inspected saved figure; execution counts alone do not establish a fresh-kernel run. The latest export check retained existing files and reported matching input hashes; it did not regenerate the nine-file result set. It audits all national candidates against the 33 London districts, retaining invalid-coordinate and ambiguous cases rather than assigning them automatically. Its CSV audits and GeoPackage exports are validation evidence, not a final cleaned borough dataset.
 
 The geographic source datum remains unresolved, so coordinate-representation agreement is not enabled by default.
 
