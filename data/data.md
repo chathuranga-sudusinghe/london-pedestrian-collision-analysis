@@ -2,7 +2,7 @@
 
 ## Study scope
 
-The proposed study examines the spatial concentration of reported pedestrian injury collisions in one London borough. The borough and final study period remain undecided; 2022–2025 is the candidate period. Count each collision once when it involves at least one pedestrian casualty, including fatal, serious and slight injuries. Without pedestrian exposure or footfall data, the study describes collision concentrations rather than pedestrian risk.
+See the [README research framework](../README.md#research-framework) for the research questions, collision-counting definition, study scope and provisional decisions.
 
 ## Official source and coverage
 
@@ -41,21 +41,31 @@ The original inputs are in the repository-root `data/` directory. The notebook i
 
 Keep the `data/` and `notebooks/` folders together when packaging the project. Alternatively, configure an external input directory using `COMP1890_DATA_DIR` or the notebook’s `DATA_DIR` setting. Do not require a particular username, repository name or absolute filesystem location.
 
-Keep originals unchanged. Future derived datasets must be written separately, with transformations and exclusions documented. Borough boundary data have not yet been obtained or selected.
+Originals remain unchanged and derived outputs are stored separately with preparation flags and a log. Borough boundary data have not yet been obtained or selected.
 
 ## Verification status
 
 **Completed:** file-presence checks, initial download-size and CSV-header checks, Excel archive-integrity checks, and copy verification. The nine downloaded files matched their manifest checksums during preservation; all ten copied files matched their source copies. These checks do not validate the records.
 
-**Saved national inspection results:** section 1.3 presents row counts and schemas; section 1.4 presents identifier and date checks for 2022–2025. They share one profiling pass. Both sections have been rerun after the presentation split and their outputs are saved. It reports matching within-type column names/order, no blank candidate-key components, no within-file duplicate keys and no record-year mismatches. Valid collision dates span 1 January to 31 December with records in all 12 months for each year. These checks cover national records and do not establish full reporting completeness or borough-level coverage.
+**Saved inspection results:** the merged notebook reports stable within-type schemas and no blank candidate-key components, within-file duplicate keys or record-year mismatches. Each year spans 1 January–31 December with all 12 months represented and no invalid collision dates. These checks describe the supplied records, not complete reporting or verified geographic accuracy.
 
-**Saved selection results:** collision-ID sets match in both directions, with no pedestrian class/type disagreements or unknown pedestrian severities. National qualifying collision counts are 18,583 / 18,525 / 18,459 / 19,115 for 2022–2025. London counts are 4,383 / 4,392 / 4,299 / 4,522, totalling 17,596. The full district-by-year table includes 32 boroughs plus City of London, while the compact ranking displays the top ten.
+**Saved selection and export results:** the merged notebook reports 74,682 national candidates, including 17,596 recorded-London and 17 separately flagged Heathrow-coded events. London annual counts are 4,383 / 4,392 / 4,299 / 4,522 for 2022–2025. Key, pooled-uniqueness, year, join and pedestrian-code safeguards pass without reported discrepancies.
 
-**Saved London coordinate results:** all 17,596 qualifying London collisions have nonblank pairs passing the broad numeric/range screen and are included in the point map. Records sharing coordinate pairs within each year number 6 / 2 / 4 / 4, representing 3 / 1 / 2 / 2 repeated pairs. Shared coordinates are not treated as duplicate collisions. These checks do not establish positional accuracy or boundary membership.
+**Saved London quality results:** the evaluated date, ID-composition, district and grid/longitude-latitude range flags are zero for the recorded-London subset. Its repeated-grid flags affect 16 records within years and 66 in the pooled-national comparison, with all events retained. These counts describe flagged records rather than distinct location pairs and do not establish positional accuracy.
 
-**Execution and remaining checks:** all 11 code cells have saved outputs with sequential execution counts 12–22, including four figures. The figures and tables have been inspected for this wording update; calculations were not rerun. Cross-year key checks, coordinate reference-system confirmation and authoritative-boundary validation remain separate tasks. Investigate the separate EHEATHROW geography if Hillingdon is shortlisted. The final borough, period and spatial method remain undecided.
+**Remaining spatial checks:** London extents, coordinate-representation agreement and borough membership remain `not_checked`. The final borough, period and boundary vintage must be agreed before final spatial filtering. The final hotspot method must align with lecture material.
 
-**Before final spatial analysis:** confirm relevant year-to-year reporting/specification changes, select an authoritative borough boundary and coordinate reference system, agree the borough and period, and check the proposed spatial method against lecture material. Do not infer completeness from the year in a filename or from the final-release label alone.
+## Preparation rules and derived candidates
+
+The cleaning rules and audit are now in Task 2 of [01_data_understanding_preparation.ipynb](../notebooks/01_data_understanding_preparation.ipynb). All 14 code cells have saved execution counts in sequence with no saved errors, and the export cell reports completion.
+
+Raw fields are retained alongside numeric/date representations and quality flags, without filling missing values or deleting repeated locations. Optional attributes never determine collision eligibility.
+
+Recorded London codes, Heathrow, blanks, the predates-code category and unrecognised codes are distinguished explicitly. National candidates remain available to investigate code/geometry disagreement. `local_authority_district = -1` means Code deprecated, not ordinary missingness.
+
+[DfT methodology](https://www.gov.uk/government/statistics/matching-stats19-collision-data-to-a-road-network-feasibility/matching-stats19-collisions-to-a-road-network-feasibility) and the [government CRS register](https://www.gov.uk/government/publications/uk-geospatial-data-standards-register/national-geospatial-data-standards-register) support British National Grid / EPSG:27700 for grid coordinates, with sources checked on 14 November 2026. This documentary reference does not validate individual points. The supplied guide does not specify the longitude/latitude datum, so cross-representation checks remain pending.
+
+The saved merged-notebook export reports 74,682 rows and the candidate CSV has 38 columns. Both `data/derived/pedestrian_collision_candidates.csv` and `data/derived/preparation_log.csv` exist and remain ignored by Git. QGIS and authoritative boundaries will support final geographic validation before submission.
 
 ## Attribution and reuse
 
