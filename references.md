@@ -39,13 +39,13 @@ Keep dataset provenance in [data/data.md](data/data.md) and completed download r
 - **Use/status:** **used** to plan full-resolution point-in-polygon allocation and distinguish analysis boundaries from generalised display boundaries. Vintage compatibility, geometry validity and coverage must still be inspected for the chosen input.
 
 <a id="r05"></a>
-### R05 — Candidate December 2024 district boundaries
+### R05 — December 2024 district reference boundaries
 
 - **Author/vintage:** Office for National Statistics; boundaries as at December 2024.
 - **Title:** [Local Authority Districts (December 2024) Boundaries UK BFE](https://www.data.gov.uk/dataset/5d392106-7cb3-4214-90ac-4b46f16f0db3/local-authority-districts-december-2024-boundaries-uk-bfe).
 - **Metadata:** [official feature layer](https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Local_Authority_Districts_December_2024_Boundaries_UK_BFE/FeatureServer/0) and [ONS item](https://www.arcgis.com/home/item.html?id=a4d56f9755be48b0a78c120e499fa9df).
 - **Access:** metadata and count-only query inspected, followed by local-file verification, on 14 November 2026; the preserved download timestamp and checksum are in the manifest.
-- **Use/status:** **candidate** for membership validation. The preserved GeoPackage has EPSG:27700 metadata, fields `LAD24CD` and `LAD24NM`, and 33 unique London codes; notebook 02 records passing polygon-validity and guide-reconciliation checks, while suitability across 2022–2025 remains unresolved.
+- **Use/status:** **used** for London membership validation and the approved fixed December 2024 Croydon footprint. The preserved GeoPackage has EPSG:27700 metadata, fields `LAD24CD` and `LAD24NM`, and 33 unique London codes; notebook 02 records passing polygon-validity and guide-reconciliation checks. This does not establish identical historical boundaries throughout 2022–2025.
 
 <a id="r06"></a>
 ### R06 — Boundary licensing and attribution
@@ -139,7 +139,7 @@ The supplied slide text and hyperlinks were inspected on 14 November 2026; image
 - **Author:** Office for National Statistics.
 - **Sources:** [Code History Database guidance](https://www.ons.gov.uk/methodology/geography/geographicalproducts/namescodesandlookups/codehistorydatabasechd), [December 2025 database metadata](https://www.data.gov.uk/dataset/4ec2169f-1a72-4c2d-be60-a74174902593/code-history-database-december-2025-for-the-uk) and [mid-2024 population estimates methods guide](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/methodologies/populationestimatesforenglandandwalesmid2022methodsguide), section 13.
 - **Access:** guidance and metadata inspected 14 November 2026; the history database itself was not downloaded or queried.
-- **Use/status:** **used** to identify official history evidence and its limitations. The methods guide lists four 2023 reorganisations outside London, and the December 2025 metadata does not list London boroughs among that release's updated geography types; neither establishes that all London polygons were unchanged throughout 2022–2025. Complete a focused history check for the selected borough before final filtering; December 2024 remains a candidate fixed reference geography.
+- **Use/status:** **used** to identify official history evidence and its limitations. The methods guide lists four 2023 reorganisations outside London, and the December 2025 metadata does not list London boroughs among that release's updated geography types; neither establishes that all London polygons were unchanged throughout 2022–2025. December 2024 is the approved fixed reference geography for the Croydon study. A focused history check would be needed to claim unchanged historical boundaries; that claim is not made by the fixed-footprint design.
 
 <a id="r17"></a>
 ### R17 — Mapshaper browser inspection
@@ -155,4 +155,12 @@ The supplied slide text and hyperlinks were inspected on 14 November 2026; image
 - **Author:** London Borough of Croydon.
 - **Sources:** [Council Local Plan 2018 page](https://www.croydon.gov.uk/planning-and-regeneration/planning-policy/croydons-development-plan/local-plan-2018), [adopted plan: We are Croydon](https://www.planvu.co.uk/croydon2018/written/lp/cpt3.php) and [Urban Design and Local Character](https://www.planvu.co.uk/croydon2018/written/lp/cpt6.php).
 - **Location/access:** section 3.2, under “Past Visions”, briefly mentions urban and suburban areas; policy SP4.1 recognises varied local character; inspected 14 November 2026.
-- **Use/status:** **used** to document the rationale for a proposed purposive Croydon case study. This qualitative planning context is not a current land-use survey or measured heterogeneity assessment and does not establish causal effects, London-wide representativeness, statistical power or unchanged external boundaries during 2022–2025; final study-area approval remains pending.
+- **Use/status:** **used** to document the rationale for the approved purposive Croydon case study. This qualitative planning context is not a current land-use survey or measured heterogeneity assessment and does not establish causal effects, London-wide representativeness, statistical power or unchanged external boundaries during 2022–2025; the approved scope uses a fixed December 2024 footprint.
+
+<a id="r19"></a>
+### R19 — STATS19 specification transition and comparability
+
+- **Author:** Department for Transport.
+- **Title:** [STATS19 collection and use: initial impacts of transition to the 2024 specification](https://www.gov.uk/government/publications/stats19-collection-and-use-impacts-of-the-2024-specification/stats19-collection-and-use-initial-impacts-of-transition-to-the-2024-specification).
+- **Updated/access:** updated 24 September 2026; inspected 14 November 2026.
+- **Use/status:** **used** to document gradual specification adoption, changed variables and injury-severity collection as comparability limitations. This does not establish uniform reporting or explain Croydon's annual counts. Including all fatal, serious and slight collisions means that a pure serious/slight reclassification would not change eligibility; this is a consequence of the selection rule, not evidence that total reporting was unaffected.

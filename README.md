@@ -4,11 +4,11 @@ COMP1890 Spatial Data Science project investigating the spatial concentration of
 
 ## Research framework
 
-Investigate the spatial concentration of reported pedestrian injury collisions within one London borough. Count each collision involving at least one pedestrian casualty once, including fatal, serious and slight injuries. Without pedestrian exposure data, the findings describe reported collision concentrations rather than pedestrian risk or causal effects.
+Investigate the spatial concentration of reported pedestrian injury collisions within Croydon’s fixed December 2024 footprint during 2022–2025. Count each collision involving at least one pedestrian casualty once, including fatal, serious and slight injuries. Without pedestrian exposure data, the findings describe reported collision concentrations rather than pedestrian risk or causal effects.
 
 | ID | Research question |
 | --- | --- |
-| Main | Where are reported pedestrian injury collisions spatially concentrated within the selected London borough during the study period? |
+| Main | Where are reported pedestrian injury collisions spatially concentrated within Croydon’s fixed December 2024 footprint during 2022–2025? |
 | SQ1 | How does the spatial distribution of qualifying collision counts vary across the borough? |
 | SQ2 | Which local concentrations, if any, are statistically significant under the selected spatial test? |
 | SQ3 | How sensitive are the identified concentrations to one alternative spatial-analysis setting? |
@@ -17,30 +17,27 @@ SQ1 provides the descriptive component of the main question. Grid-based counts a
 
 ### Scope and status
 
-The borough and final study period remain undecided; 2022–2025 is the candidate period. No predictive model training is planned. The questions remain unanswered for the final study area until geographic validation and spatial analysis are completed.
+The approved study frame is Croydon, 2022–2025, using the Office for National Statistics (ONS) December 2024 footprint as a fixed reference geography. This does not assert that historical boundaries were identical in every year. No predictive model training is planned; grid size, neighbourhood weights and hotspot statistic remain undecided.
 
-The merged notebook has saved execution results for all 14 code cells, including four EDA figures, with no saved errors. Preparation reports 74,682 national candidates, including 17,596 recorded-London and 17 Heathrow-coded collisions, without imputing values or deleting repeated locations. Notebook 02 records resolved London membership under the candidate December 2024 boundaries; the final borough/period, temporal suitability, coordinate agreement and hotspot method remain unresolved.
+The merged notebook has saved execution results for all 14 code cells, including four EDA figures, with no saved errors. Preparation reports 74,682 national candidates, including 17,596 recorded-London and 17 Heathrow-coded collisions, without imputing values or deleting repeated locations. Notebook 02 records resolved London membership under the December 2024 boundaries. Notebook 03 has saved execution counts 1–6 without errors and reproduces 792 Croydon collisions across all three grids. Reporting-comparability assessment, coordinate agreement and hotspot method remain pending.
 
-### Provisional study-area rationale
+### Approved study-area rationale
 
-**Decision status:** Croydon and 2022–2025 are proposed, not finally adopted. This is a purposive case-study proposal based on research relevance and feasibility, rather than random selection of a borough or selection for statistically significant hotspots. If approved, the analysis would include all qualifying reported collisions meeting the agreed borough/period rules, rather than a random sample of events; the data still do not capture every real-world injury collision.
+**Decision status:** Croydon and 2022–2025 are approved, with membership determined against the fixed December 2024 footprint. This is a purposive case study based on research relevance and feasibility, rather than random selection or observed hotspot significance. It includes all qualifying reported collisions meeting those rules, not a random sample of events; the data do not capture every real-world injury collision.
 
 **Research rationale:** Croydon's Local Plan policy SP4.1 recognises varied local character; section 3.2 briefly mentions urban and suburban areas while discussing past visions ([R18](references.md#r18)). This is qualitative planning context for investigating within-borough collision concentrations, not a current land-use survey or measured heterogeneity assessment. It does not establish that urban character causes collisions; no land-use effect or exposure-adjusted risk is being estimated.
 
-**Available evidence:** geometric membership under the candidate December 2024 boundaries gives Croydon 792 collisions, with annual counts of 190, 200, 180 and 222 for 2022–2025. This establishes an available four-year data base, not adequate statistical power for an unspecified grid/test or proof of reporting comparability. Two recorded-Croydon events fall geometrically elsewhere and one recorded elsewhere falls inside Croydon; fewer code differences are a practical advantage, not the main selection reason.
+**Available evidence:** geometric membership under the December 2024 boundaries gives Croydon 792 collisions, with annual counts of 190, 200, 180 and 222 for 2022–2025. This establishes an available four-year data base, not adequate statistical power for an unspecified grid/test or proof of reporting comparability. Two recorded-Croydon events fall geometrically elsewhere and one recorded elsewhere falls inside Croydon; fewer code differences are a practical advantage, not the main selection reason.
 
-**Alternatives and limits:** Westminster (1,246 events) and Lambeth (743) remain defensible alternatives. Croydon is not claimed to be uniquely suitable or representative of London; a single-borough scope permits a focused analysis within the coursework's time and report limits. No hotspot significance results have been used to select the proposed case.
+**Alternatives and limits:** Westminster (1,246 events) and Lambeth (743) remain defensible alternatives. Croydon is not claimed to be uniquely suitable or representative of London; a single-borough scope permits a focused analysis within the coursework's time and report limits. No hotspot significance results have been used to select the case.
 
-**Period rationale:** 2022–2025 uses the four supplied annual input pairs and pools events for spatial description. Pooling can hide annual change, so retain annual counts and assess reporting/schema comparability; do not treat modest count variation as proof of unchanged reporting. The final period remains conditional on those checks.
+**Period rationale:** 2022–2025 uses the four supplied annual input pairs and pools events for spatial description. Notebook 03 retains annual counts and records reporting/schema limitations, including the gradual transition to the 2024 STATS19 specification ([R19](references.md#r19)). Annual count variation alone cannot establish reporting comparability or explain a change.
 
-Before finalising the study area and producing its dataset:
+The approved next step compares 100 m, 250 m and 500 m grids descriptively, anchored at the common British National Grid origin (0, 0). Retain every positive-area intersection with the footprint, including zero-count and partial cells, and assign each event once using half-open grid intervals. The 100 m and 250 m grids each nest within 500 m, but not within each other; unequal clipped areas must inform later inference choices.
 
-- Confirm the borough/period choice and record it before examining hotspot significance.
-- Complete the Croydon external-boundary history check for 2022–2025; ward reviews are not proof of unchanged external boundaries.
-- Agree the reference geography and point-membership policy, retaining code differences in the audit.
-- Examine candidate grid-count distributions, including zero-count and boundary cells, before choosing grid size, origin, weights, local statistic and one sensitivity check.
+Grid size, neighbourhood weights, local statistic, null hypothesis, multiple-testing procedure and one sensitivity setting require a later decision. No significance tests or automatic grid selection are included in notebook 03. Historical boundary research remains necessary for any claim of unchanged historical boundaries, rather than a prerequisite for this explicitly fixed-footprint design.
 
-**Draft report wording, subject to the decisions above:** “Croydon is proposed as a purposive case study because the varied local character recognised in its planning policy provides a relevant setting for examining within-borough concentrations of reported pedestrian injury collisions. Four years of supplied records provide a bounded analytical scope. Other boroughs may also be suitable, and the study does not claim that Croydon represents London as a whole.”
+**Draft report wording:** “Croydon was selected purposively because the varied local character recognised in its planning policy provides a relevant setting for examining within-borough concentrations of reported pedestrian injury collisions. The study uses 2022–2025 records within a fixed December 2024 footprint. Other boroughs may also be suitable, and the study does not claim that Croydon represents London as a whole.”
 
 ## Map inspection and report figures
 
@@ -66,7 +63,10 @@ Eight screenshots are stored locally in ignored `data/screenshots/`; they are no
 │   └── download_boundaries.py        # Candidate ONS boundary acquisition
 ├── notebooks/
 │   ├── 01_data_understanding_preparation.ipynb  # Executed inspection, EDA and preparation
-│   └── 02_spatial_validation.ipynb              # Executed validation and Python inspection maps
+│   ├── 02_spatial_validation.ipynb              # Executed validation and Python inspection maps
+│   └── 03_croydon_grid_comparison.ipynb          # Executed Croydon selection and descriptive grids
+├── tests/
+│   └── test_grid_comparison.py                 # Synthetic grid checks; no real-data loading
 └── COMP1890_Spatial_Data_Science/     # Local coursework reference material
 ```
 
@@ -137,7 +137,23 @@ Use section 3.8 to inspect the two selected collision examples in Python with fi
 
 The saved example maps show matching Lambeth membership and a Westminster/Brent disagreement approximately 2.16 m from the recorded polygon. Existing validation exports remain protected and do not need regenerating for this visual-only extension; the final cell may skip writes and report matching inputs. No study borough, final period or spatial exclusions are selected by these example maps.
 
-British National Grid remains the analysis coordinate representation; the longitude/latitude cross-check remains explicitly unperformed. December 2024 is a candidate fixed reference geography, not a verified year-specific boundary for every event; complete a focused external-boundary history check for the selected borough before freezing its dataset. Ward reviews alone do not establish a change to the borough's external boundary; see [R15–R16](references.md#r15).
+British National Grid remains the analysis coordinate representation; the longitude/latitude cross-check remains explicitly unperformed. December 2024 is the approved fixed reference geography for Croydon, not a verified year-specific boundary for every event. Ward reviews alone do not establish a change to the borough's external boundary; see [R15–R16](references.md#r15).
+
+## Croydon grid comparison
+
+[03_croydon_grid_comparison.ipynb](notebooks/03_croydon_grid_comparison.ipynb) has six saved code cells with sequential execution counts 1–6 and no saved errors; both saved figures have been visually inspected. It independently checks saved validation evidence against the candidate records and original boundary, selects Croydon events, displays annual summaries and compares three descriptive grids. Existing notebook 02 metadata describing an undecided study area is preserved as historical validation evidence.
+
+In VS Code, open notebook 03, select the existing project `.venv` kernel, restart, run all cells in order and save. Use `notebooks/` as the working directory; the default inputs are `../data`, including the existing `derived/spatial_validation_closure/` exports. Optional `COMP1890_DATA_DIR`, `COMP1890_VALIDATION_DIR` and `COMP1890_BOUNDARY_PATH` settings support other input locations; no environment-variable command is required for the documented layout.
+
+The notebook checks the saved annual baseline (190, 200, 180 and 222 events) and stops on discrepancies rather than forcing a result. It produces in-memory tables and figures without downloads, data exports or changes to existing validation artifacts. The saved run reproduces 792 events (190 / 200 / 180 / 222 annually) in every grid. The 100 m / 250 m / 500 m grids contain 9,006 / 1,520 / 415 cells, with 94.1% / 76.9% / 55.4% zero-count cells and 20 / 41 / 74 events in partial cells. No grid is selected; count maps do not estimate pedestrian risk, and sequential execution counts alone do not independently establish a fresh-kernel run.
+
+With the documented project environment active, run the synthetic checks from the repository root:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+These tests extract only the notebook’s pure grid functions and use synthetic geometries to check unique assignment, zero cells, clipped areas, holes, grid origins, summary denominators and invalid inputs. They do not execute notebook input cells, verify real-data provenance or establish the final figures’ readability.
 
 ### Reproduce the ignored inputs
 
@@ -147,12 +163,13 @@ Original data and derived exports are excluded from Git, so cloning the reposito
 2. Obtain the GeoPackage through the [official boundary download](https://open-geography-portalx-ons.hub.arcgis.com/api/download/v1/items/a4d56f9755be48b0a78c120e499fa9df/geoPackage?layers=0), preserving it as `data/ons-lad-december-2024-uk-bfe.gpkg` alongside the supplied manifest.
 3. Run notebook 01 from `notebooks/` to verify its source inputs and generate collision candidates and the preparation log.
 4. Run notebook 02 to verify the boundary/guide and audit spatial membership, using a new validation-output directory if current results need exporting separately.
+5. Run notebook 03 using those validation exports; configure `COMP1890_VALIDATION_DIR` only if they are outside the default closure directory.
 
 The acquisition script is for initial acquisition and refuses an existing boundary manifest entry, including the one supplied in this repository. For a clone with that entry, download the boundary file directly as above; no manifest reset is required. The final submission's input-packaging arrangements remain to be confirmed.
 
 ## Environment and execution
 
-Use Python 3.12; local setup was checked with Python 3.12.3. `requirements.txt` pins the direct dependencies used by the two notebooks. Transitive dependencies are not locked. The repository-root `.venv` contains the installed spatial packages, whose versions match the saved validation run; the installed NumPy version is also pinned.
+Use Python 3.12; local setup was checked with Python 3.12.3. `requirements.txt` pins the direct dependencies used by the three notebooks. Transitive dependencies are not locked. The repository-root `.venv` contains the installed spatial packages, whose versions match the saved validation run; the installed NumPy version is also pinned.
 
 To reproduce the setup on Ubuntu/WSL, start from the repository root. Create the environment only if it does not already exist:
 
