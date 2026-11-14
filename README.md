@@ -21,15 +21,13 @@ The borough and final study period remain undecided; 2022–2025 is the candidat
 
 The merged notebook has saved execution results for all 14 code cells, including four EDA figures, with no saved errors. Preparation reports 74,682 national candidates, including 17,596 recorded-London and 17 Heathrow-coded collisions, without imputing values or deleting repeated locations. Notebook 02 records resolved London membership under the candidate December 2024 boundaries; the final borough/period, temporal suitability, coordinate agreement and hotspot method remain unresolved.
 
-## Planned QGIS work before submission
+## Map inspection and report figures
 
-**Decision:** use QGIS later in the project, before the final PDF submission. This work is planned and has not yet been completed. Schedule it after the study borough and period are agreed and suitable spatial layers and analysis outputs are available.
+Use the existing Python workflow for spatial checks and map figures; no QGIS installation is required for this project. GeoPandas and Matplotlib provide reproducible maps, while browser inspection is supplementary. Final map layouts and captions must identify the data, mapped quantity, coordinate reference system and material limitations.
 
-- Inspect the selected borough boundary, coordinate reference systems and alignment of collision and analysis layers.
-- Prepare final map layouts from verified analysis outputs.
-- Capture selected screenshots of the actual QGIS workflow and results for the report's Implementation and Results and Discussions sections, with concise captions explaining their relevance.
+Mapshaper was used to view the 33 London boundary polygons and 17,613 validation points and inspect two collision records. Record `2022010376283` had matching Lambeth codes; `2022010354125` had recorded Westminster and geometric Brent codes, consistent with the exported audit. This checks rendering and attribute consistency rather than independently verifying locations or reviewing all disagreements.
 
-Record the QGIS version and the steps actually performed. Use project-relative layer paths when saving the QGIS project. Decide the exact screenshots once the relevant work is complete, keeping the report focused and within its submission limits.
+Eight screenshots are stored locally in ignored `data/screenshots/`; they are not notebook inputs and are not supplied by cloning the repository. Select relevant genuine screenshots for the final submission and package any used evidence explicitly; temporary drawn symbols are not collision records. The Python inspection maps in notebook 02 have saved outputs and do not depend on those screenshots.
 
 ## Project structure
 
@@ -47,7 +45,7 @@ Record the QGIS version and the steps actually performed. Use project-relative l
 │   └── download_boundaries.py        # Candidate ONS boundary acquisition
 ├── notebooks/
 │   ├── 01_data_understanding_preparation.ipynb  # Executed inspection, EDA and preparation
-│   └── 02_spatial_validation.ipynb              # Executed validation, diagnostics and exports
+│   └── 02_spatial_validation.ipynb              # Executed validation and Python inspection maps
 └── COMP1890_Spatial_Data_Science/     # Local coursework reference material
 ```
 
@@ -98,7 +96,7 @@ An external input folder can be supplied with `--data-dir`, provided it contains
 
 ### Run spatial validation
 
-[02_spatial_validation.ipynb](notebooks/02_spatial_validation.ipynb) has nine saved code-cell execution counts in sequence, 1–9, with no saved errors, including the corrected highway-status summaries and successful export. All nine output files exist in `data/derived/spatial_validation_closure/`, and the run metadata records seven input hashes. Execution counts alone do not independently establish a fresh-kernel run.
+[02_spatial_validation.ipynb](notebooks/02_spatial_validation.ipynb) has ten saved code-cell execution counts in sequence, 1–10, with no saved errors, including the context and selected-example maps. The latest export check retained all existing files and reported matching input hashes; it did not regenerate exports. All nine output files exist in `data/derived/spatial_validation_closure/`, and the run metadata records seven input hashes. Execution counts alone do not independently establish a fresh-kernel run.
 
 For reproduction, use the documented environment and run from `notebooks/` with the candidate CSV, guide, boundary file, manifest and four original annual collision CSVs available. Notebook 02 works independently of notebook 01's kernel state, using its exported candidates.
 
@@ -114,7 +112,9 @@ For a future export, select an unused `OUTPUT_DIR` in the notebook's parameter c
 
 The run reads and hashes four original collision CSVs in addition to the boundary, guide and candidate inputs. It performs spatial diagnostics and writes nine outputs only when none of their names already exists in the selected directory. Do not remove preserved exports to force a rerun.
 
-Inspect real outputs in QGIS before selecting screenshots or freezing the final borough dataset. In the exported `london_validation.gpkg`, use `london_boundaries` and `collision_validation` with EPSG:27700; join `district_difference_diagnostics.csv` by `collision_index` when inspecting diagnostic attributes. Review the largest distances and each observed pair-relation category, record the QGIS version and steps performed, and capture genuine screenshots only after inspection.
+Use section 3.8 to inspect the two selected collision examples in Python with fixed 50 m-wide views and labelled recorded/geometric boundaries. The maps and evidence table are generated from existing notebook variables without new dependencies, network requests or file writes. Review point centres and attributes rather than marker edges; the examples do not validate every collision or establish ground-truth accuracy.
+
+The saved example maps show matching Lambeth membership and a Westminster/Brent disagreement approximately 2.16 m from the recorded polygon. Existing validation exports remain protected and do not need regenerating for this visual-only extension; the final cell may skip writes and report matching inputs. No study borough, final period or spatial exclusions are selected by these example maps.
 
 British National Grid remains the analysis coordinate representation; the longitude/latitude cross-check remains explicitly unperformed. December 2024 is a candidate fixed reference geography, not a verified year-specific boundary for every event; complete a focused external-boundary history check for the selected borough before freezing its dataset. Ward reviews alone do not establish a change to the borough's external boundary; see [R15–R16](references.md#r15).
 
