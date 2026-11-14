@@ -41,7 +41,7 @@ The original inputs are in the repository-root `data/` directory. The notebook i
 
 Keep the `data/` and `notebooks/` folders together when packaging the project. Alternatively, configure an external input directory using `COMP1890_DATA_DIR` or the notebook’s `DATA_DIR` setting. Do not require a particular username, repository name or absolute filesystem location.
 
-Originals remain unchanged and derived outputs are stored separately with preparation flags and a log. Borough boundary data have not yet been obtained or selected.
+Originals remain unchanged and derived outputs are stored separately with preparation flags and a log. The original December 2024 ONS UK BFE boundary GeoPackage is preserved; its geometry and temporal suitability still require validation.
 
 ## Verification status
 
@@ -53,7 +53,7 @@ Originals remain unchanged and derived outputs are stored separately with prepar
 
 **Saved London quality results:** the evaluated date, ID-composition, district and grid/longitude-latitude range flags are zero for the recorded-London subset. Its repeated-grid flags affect 16 records within years and 66 in the pooled-national comparison, with all events retained. These counts describe flagged records rather than distinct location pairs and do not establish positional accuracy.
 
-**Remaining spatial checks:** London extents, coordinate-representation agreement and borough membership remain `not_checked`. The final borough, period and boundary vintage must be agreed before final spatial filtering. The final hotspot method must align with lecture material.
+**Remaining spatial checks:** London extents, coordinate-representation agreement and borough membership remain `not_checked`. The final borough and period, and suitability of the candidate December 2024 boundary vintage, must be agreed before final spatial filtering. The final hotspot method must align with lecture material.
 
 ## Preparation rules and derived candidates
 
@@ -67,6 +67,28 @@ Recorded London codes, Heathrow, blanks, the predates-code category and unrecogn
 
 The saved merged-notebook export reports 74,682 rows and the candidate CSV has 38 columns. Both `data/derived/pedestrian_collision_candidates.csv` and `data/derived/preparation_log.csv` exist and remain ignored by Git. QGIS and authoritative boundaries will support final geographic validation before submission.
 
+## Candidate boundary input
+
+The [ONS December 2024 UK BFE district boundaries](../references.md#r05) are the current candidate for spatial membership checks. The preserved file contains layer `LAD_DEC_24_UK_BFE`, a MULTIPOLYGON geometry column, EPSG:27700 metadata and 361 UK features, including 33 unique London district codes. Polygon validity, guide-code reconciliation and temporal suitability still require the spatial-validation run.
+
+Full-resolution allocation and licensing guidance are recorded in the [reference register](../references.md#r04).
+
+The prepared [boundary acquisition script](../scripts/download_boundaries.py) downloads the original GeoPackage and appends its retrieval metadata, SHA-256 and initial format checks to the manifest. Its completed download is 163,885,056 bytes, and a read-only local check confirms the manifest size and SHA-256. The script records the ONS licence reference; confirm the product-specific attribution and applicable copyright year before reproducing maps.
+
+The manifest now records the stable download URL and resolved host/path without signed query parameters, timestamp, size, checksum, publisher, boundary vintage, licence reference and initial format checks. The boundary SHA-256 is `a421a026170391ade115e7424b8c4e06e682e0290978b827e03941b38b8e9475`. The December 2024 vintage must be justified for the final period, with any relevant boundary changes documented.
+
+## Spatial-validation results and status
+
+[02_spatial_validation.ipynb](../notebooks/02_spatial_validation.ipynb) has a saved eight-cell execution without errors; its export step skipped existing files. It audits all national candidates against the 33 London districts, retaining invalid-coordinate and ambiguous cases rather than assigning them automatically. Its CSV audits and GeoPackage exports are validation evidence, not a final cleaned borough dataset.
+
+The geographic source datum remains unresolved, so coordinate-representation agreement is not enabled by default.
+
+ Polygon-validity and district-reconciliation safeguards pass, with no positive-area overlaps and 17,613 unique London interior memberships. The 199 recorded/geometric code differences comprise 182 London district differences and 17 Heathrow-coded events inside Hillingdon.
+
+The revised export cell additionally reports matching, mismatching or unverifiable input provenance; execution of this revision is pending. Its seven preceding analysis/map cells and their saved outputs are unchanged. Temporal suitability, QGIS review and final borough/period selection remain unresolved.
+
 ## Attribution and reuse
 
 Cite the DfT source page, the relevant files, the data guide and the access date in the report. The source page links to the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/); check applicable dataset terms and attribution before redistributing inputs. Boundary data will need their own source and licence record.
+
+Acquisition-time `not_checked` fields in the manifest describe the download stage; notebook 02 provides the later geometry and code-reconciliation evidence. Reproduction of ignored inputs is described in the [README](../README.md#reproduce-the-ignored-inputs).

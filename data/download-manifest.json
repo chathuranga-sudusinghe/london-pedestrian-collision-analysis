@@ -114,6 +114,31 @@
       "checks": {
         "xlsx_integrity": "passed"
       }
+    },
+    {
+      "file": "ons-lad-december-2024-uk-bfe.gpkg",
+      "url": "https://open-geography-portalx-ons.hub.arcgis.com/api/download/v1/items/a4d56f9755be48b0a78c120e499fa9df/geoPackage?layers=0",
+      "resolved_url": "https://stg-arcgisazurecdataprod1.az.arcgis.com/exportfiles-1559-24068/Local_Authority_Districts_December_2024_Boundaries_UK_BFE_3183260240425062468.gpkg",
+      "source_page": "https://www.data.gov.uk/dataset/5d392106-7cb3-4214-90ac-4b46f16f0db3/local-authority-districts-december-2024-boundaries-uk-bfe",
+      "publisher": "Office for National Statistics",
+      "boundary_vintage": "December 2024",
+      "boundary_type": "BFE: full resolution, extent of the realm",
+      "licence_source": "https://www.ons.gov.uk/methodology/geography/licences",
+      "bytes": 163885056,
+      "sha256": "a421a026170391ade115e7424b8c4e06e682e0290978b827e03941b38b8e9475",
+      "downloaded_utc": "2026-11-14T07:30:27.968953+00:00",
+      "checks": {
+        "sqlite_integrity": "ok",
+        "feature_layers": [
+          {
+            "name": "LAD_DEC_24_UK_BFE",
+            "srs_id": 27700
+          }
+        ],
+        "geometry_validity": "not_checked",
+        "london_code_reconciliation": "not_checked",
+        "temporal_suitability": "not_checked"
+      }
     }
   ]
 }
