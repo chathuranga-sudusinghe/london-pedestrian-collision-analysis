@@ -45,7 +45,7 @@ Keep dataset provenance in [data/data.md](data/data.md) and completed download r
 - **Title:** [Local Authority Districts (December 2024) Boundaries UK BFE](https://www.data.gov.uk/dataset/5d392106-7cb3-4214-90ac-4b46f16f0db3/local-authority-districts-december-2024-boundaries-uk-bfe).
 - **Metadata:** [official feature layer](https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Local_Authority_Districts_December_2024_Boundaries_UK_BFE/FeatureServer/0) and [ONS item](https://www.arcgis.com/home/item.html?id=a4d56f9755be48b0a78c120e499fa9df).
 - **Access:** metadata and count-only query inspected, followed by local-file verification, on 14 November 2026; the preserved download timestamp and checksum are in the manifest.
-- **Use/status:** **candidate** for membership validation. The preserved GeoPackage has EPSG:27700 metadata, fields `LAD24CD` and `LAD24NM`, and 33 unique London codes; this does not establish polygon validity, reconciliation with the guide or suitability across 2022–2025.
+- **Use/status:** **candidate** for membership validation. The preserved GeoPackage has EPSG:27700 metadata, fields `LAD24CD` and `LAD24NM`, and 33 unique London codes; notebook 02 records passing polygon-validity and guide-reconciliation checks, while suitability across 2022–2025 remains unresolved.
 
 <a id="r06"></a>
 ### R06 — Boundary licensing and attribution
@@ -63,7 +63,7 @@ Keep dataset provenance in [data/data.md](data/data.md) and completed download r
 - **Author:** Shapely contributors; rolling software documentation.
 - **Title:** [shapely.within](https://shapely.readthedocs.io/en/stable/reference/shapely.within.html).
 - **Location/access:** predicate definition and polygon-boundary example; accessed 14 November 2026.
-- **Use/status:** **candidate** implementation reference for distinguishing strict interior membership from boundary intersections. A point on a polygon boundary is not within its interior; unmatched, boundary and multiple matches need separate audit categories.
+- **Use/status:** **used** implementation reference for distinguishing strict interior membership from boundary intersections. A point on a polygon boundary is not within its interior; unmatched, boundary and multiple matches need separate audit categories.
 
 <a id="r08"></a>
 ### R08 — Coordinate transformations and available operations
@@ -123,4 +123,20 @@ The supplied slide text and hyperlinks were inspected on 14 November 2026; image
 - **Author:** GeoPandas developers; rolling software documentation.
 - **Sources:** [installation](https://geopandas.org/en/stable/getting_started/install.html), [read_file](https://geopandas.org/en/stable/docs/reference/api/geopandas.read_file.html) and [sjoin](https://geopandas.org/en/stable/docs/reference/api/geopandas.sjoin.html).
 - **Access:** 14 November 2026; published package versions checked through the Python Package Index on the same date.
-- **Use/status:** **used** for the validation notebook and dependency specification. Spatial packages are installed and recorded in the saved run; the revised export provenance check awaits execution. The documentation is rolling, so retain the actual package versions with results.
+- **Use/status:** **used** for the validation notebook and dependency specification. Spatial packages are installed and recorded in the saved run; the saved nine-cell execution includes corrected highway-status summaries and a successful nine-file export with seven input hashes. The documentation is rolling, so retain the actual package versions with results.
+
+<a id="r15"></a>
+### R15 — Ward reviews and external council boundaries
+
+- **Author:** Local Government Boundary Commission for England; rolling guidance.
+- **Title:** [How reviews work](https://www.lgbce.org.uk/how-reviews-work).
+- **Location/access:** electoral reviews and principal area boundary reviews; accessed 14 November 2026.
+- **Use/status:** **used** to distinguish internal ward changes from changes to a council's external boundary. A ward review alone does not establish that a borough allocation polygon changed.
+
+<a id="r16"></a>
+### R16 — Official geography history and coverage limitations
+
+- **Author:** Office for National Statistics.
+- **Sources:** [Code History Database guidance](https://www.ons.gov.uk/methodology/geography/geographicalproducts/namescodesandlookups/codehistorydatabasechd), [December 2025 database metadata](https://www.data.gov.uk/dataset/4ec2169f-1a72-4c2d-be60-a74174902593/code-history-database-december-2025-for-the-uk) and [mid-2024 population estimates methods guide](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/methodologies/populationestimatesforenglandandwalesmid2022methodsguide), section 13.
+- **Access:** guidance and metadata inspected 14 November 2026; the history database itself was not downloaded or queried.
+- **Use/status:** **used** to identify official history evidence and its limitations. The methods guide lists four 2023 reorganisations outside London, and the December 2025 metadata does not list London boroughs among that release's updated geography types; neither establishes that all London polygons were unchanged throughout 2022–2025. Complete a focused history check for the selected borough before final filtering; December 2024 remains a candidate fixed reference geography.

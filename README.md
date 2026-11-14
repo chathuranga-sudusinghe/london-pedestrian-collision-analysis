@@ -19,7 +19,7 @@ SQ1 provides the descriptive component of the main question. Grid-based counts a
 
 The borough and final study period remain undecided; 2022–2025 is the candidate period. No predictive model training is planned. The questions remain unanswered for the final study area until geographic validation and spatial analysis are completed.
 
-The merged notebook has saved execution results for all 14 code cells, including four EDA figures, with no saved errors. Preparation reports 74,682 national candidates, including 17,596 recorded-London and 17 Heathrow-coded collisions, without imputing values or deleting repeated locations. The final borough and period, coordinate consistency, boundary membership and hotspot method remain unresolved.
+The merged notebook has saved execution results for all 14 code cells, including four EDA figures, with no saved errors. Preparation reports 74,682 national candidates, including 17,596 recorded-London and 17 Heathrow-coded collisions, without imputing values or deleting repeated locations. Notebook 02 records resolved London membership under the candidate December 2024 boundaries; the final borough/period, temporal suitability, coordinate agreement and hotspot method remain unresolved.
 
 ## Planned QGIS work before submission
 
@@ -47,7 +47,7 @@ Record the QGIS version and the steps actually performed. Use project-relative l
 │   └── download_boundaries.py        # Candidate ONS boundary acquisition
 ├── notebooks/
 │   ├── 01_data_understanding_preparation.ipynb  # Executed inspection, EDA and preparation
-│   └── 02_spatial_validation.ipynb              # Executed validation; export check revised
+│   └── 02_spatial_validation.ipynb              # Executed validation, diagnostics and exports
 └── COMP1890_Spatial_Data_Science/     # Local coursework reference material
 ```
 
@@ -70,9 +70,9 @@ The saved merged-notebook export reports 74,682 candidate rows, and both generat
 - `data/derived/pedestrian_collision_candidates.csv`
 - `data/derived/preparation_log.csv`
 
-The saved London audit reports no evaluated date, ID-composition, district-code or coordinate-range problems. It flags 16 records for within-year repeats and 66 for pooled-national repeats, retaining those events. London extent screens, grid/longitude-latitude agreement and borough membership remain `not_checked`.
+The saved London audit reports no evaluated date, ID-composition, district-code or coordinate-range problems. It flags 16 records for within-year repeats and 66 for pooled-national repeats, retaining those events. Spatial checks retain their preparation-stage `not_checked` status; notebook 02 supplies the later London membership evidence. Grid/longitude-latitude agreement remains unperformed.
 
-Grid CRS evidence for EPSG:27700 is recorded in the merged notebook. The longitude/latitude datum and spatial consistency still need verification before final analysis.
+Grid CRS evidence for EPSG:27700 is recorded in the merged notebook. Use the documented grid coordinates for analysis; the supplementary longitude/latitude agreement check remains unperformed because its source datum is unresolved.
 
 ## References and spatial validation
 
@@ -98,13 +98,25 @@ An external input folder can be supplied with `--data-dir`, provided it contains
 
 ### Run spatial validation
 
-[02_spatial_validation.ipynb](notebooks/02_spatial_validation.ipynb) has a saved eight-cell execution without errors, including an export skip because files already existed. Install the updated requirements in the existing environment before opening it, then run from `notebooks/` with the candidate CSV, guide, boundary file and manifest available. It works independently of notebook 01's kernel state, using notebook 01's exported candidates.
+[02_spatial_validation.ipynb](notebooks/02_spatial_validation.ipynb) has nine saved code-cell execution counts in sequence, 1–9, with no saved errors, including the corrected highway-status summaries and successful export. All nine output files exist in `data/derived/spatial_validation_closure/`, and the run metadata records seven input hashes. Execution counts alone do not independently establish a fresh-kernel run.
+
+For reproduction, use the documented environment and run from `notebooks/` with the candidate CSV, guide, boundary file, manifest and four original annual collision CSVs available. Notebook 02 works independently of notebook 01's kernel state, using its exported candidates.
 
 The notebook checks polygon validity, reconciles London codes, classifies membership, compares recorded codes and prepares a London context/diagnostic figure. Geographic-coordinate agreement remains `not_checked` by default until the datum evidence is configured; a decision tolerance also needs a rationale. No borough is automatically selected, and no hotspot statistic is calculated.
 
-Validation outputs default to `data/derived/spatial_validation/`, including a GeoPackage, audit CSVs and run metadata. If any named output exists, the export cell skips all writes, lists existing/missing files and compares stored/current input hashes; choose a new `COMP1890_VALIDATION_OUTPUT_DIR` to save current results separately. The new hash-comparison messages await execution, and matching inputs do not establish unchanged code or artifact contents.
+Validation outputs use the notebook's `OUTPUT_DIR`, currently `DATA_DIR / "derived" / "spatial_validation_closure"`. If any named output exists, the export cell skips all writes, lists existing/missing files and compares stored/current input hashes; choose another new `OUTPUT_DIR` before a future export. Matching input hashes do not establish unchanged code, settings or artifact contents, and the earlier six-file result set remains preserved in `data/derived/spatial_validation/`.
 
-Inspect real outputs in QGIS before selecting screenshots or freezing the final borough dataset.
+The diagnostics retrieve both highway fields from the original annual collision files with manifest verification and one-to-one joins. They measure distance to the recorded district polygon, classify district pairs by shared edge, point contact or disjointness, and summarise by year and directed borough pair. No threshold, correction or exclusion is applied; the current highway field is location-derived consistency evidence, not independent positional validation.
+
+In VS Code, select the existing project `.venv` kernel, open notebook 02, restart the kernel, run all cells in order and save. The notebook expects its working directory to be `notebooks/`. Its output path is already configured in the first code cell; no terminal environment-variable command is required.
+
+For a future export, select an unused `OUTPUT_DIR` in the notebook's parameter cell before execution. This project-relative Python setting works across Windows, macOS and Linux. Existing results are retained when the configured directory already contains a named output.
+
+The run reads and hashes four original collision CSVs in addition to the boundary, guide and candidate inputs. It performs spatial diagnostics and writes nine outputs only when none of their names already exists in the selected directory. Do not remove preserved exports to force a rerun.
+
+Inspect real outputs in QGIS before selecting screenshots or freezing the final borough dataset. In the exported `london_validation.gpkg`, use `london_boundaries` and `collision_validation` with EPSG:27700; join `district_difference_diagnostics.csv` by `collision_index` when inspecting diagnostic attributes. Review the largest distances and each observed pair-relation category, record the QGIS version and steps performed, and capture genuine screenshots only after inspection.
+
+British National Grid remains the analysis coordinate representation; the longitude/latitude cross-check remains explicitly unperformed. December 2024 is a candidate fixed reference geography, not a verified year-specific boundary for every event; complete a focused external-boundary history check for the selected borough before freezing its dataset. Ward reviews alone do not establish a change to the borough's external boundary; see [R15–R16](references.md#r15).
 
 ### Reproduce the ignored inputs
 
