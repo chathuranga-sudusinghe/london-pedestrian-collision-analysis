@@ -148,3 +148,11 @@ The supplied slide text and hyperlinks were inspected on 14 November 2026; image
 - **Sources:** [GeoPackage support](https://mapshaper.org/docs/formats/geopackage.html) and [attribute inspection](https://mapshaper.org/docs/reference.html#-inspect).
 - **Access:** documentation and browser workflow inspected 14 November 2026; deployed application version not recorded.
 - **Use/status:** **used** for supplementary rendering and attribute inspection of the exported GeoPackage. Two example records were checked against the exported audit; the browser check does not independently validate coordinate accuracy. Screenshots are local evidence, not notebook dependencies; Python remains the primary analytical workflow.
+
+<a id="r18"></a>
+### R18 — Croydon case-study context
+
+- **Author:** London Borough of Croydon.
+- **Sources:** [Council Local Plan 2018 page](https://www.croydon.gov.uk/planning-and-regeneration/planning-policy/croydons-development-plan/local-plan-2018), [adopted plan: We are Croydon](https://www.planvu.co.uk/croydon2018/written/lp/cpt3.php) and [Urban Design and Local Character](https://www.planvu.co.uk/croydon2018/written/lp/cpt6.php).
+- **Location/access:** section 3.2, under “Past Visions”, briefly mentions urban and suburban areas; policy SP4.1 recognises varied local character; inspected 14 November 2026.
+- **Use/status:** **used** to document the rationale for a proposed purposive Croydon case study. This qualitative planning context is not a current land-use survey or measured heterogeneity assessment and does not establish causal effects, London-wide representativeness, statistical power or unchanged external boundaries during 2022–2025; final study-area approval remains pending.

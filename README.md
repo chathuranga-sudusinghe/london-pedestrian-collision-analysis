@@ -21,6 +21,27 @@ The borough and final study period remain undecided; 2022–2025 is the candidat
 
 The merged notebook has saved execution results for all 14 code cells, including four EDA figures, with no saved errors. Preparation reports 74,682 national candidates, including 17,596 recorded-London and 17 Heathrow-coded collisions, without imputing values or deleting repeated locations. Notebook 02 records resolved London membership under the candidate December 2024 boundaries; the final borough/period, temporal suitability, coordinate agreement and hotspot method remain unresolved.
 
+### Provisional study-area rationale
+
+**Decision status:** Croydon and 2022–2025 are proposed, not finally adopted. This is a purposive case-study proposal based on research relevance and feasibility, rather than random selection of a borough or selection for statistically significant hotspots. If approved, the analysis would include all qualifying reported collisions meeting the agreed borough/period rules, rather than a random sample of events; the data still do not capture every real-world injury collision.
+
+**Research rationale:** Croydon's Local Plan policy SP4.1 recognises varied local character; section 3.2 briefly mentions urban and suburban areas while discussing past visions ([R18](references.md#r18)). This is qualitative planning context for investigating within-borough collision concentrations, not a current land-use survey or measured heterogeneity assessment. It does not establish that urban character causes collisions; no land-use effect or exposure-adjusted risk is being estimated.
+
+**Available evidence:** geometric membership under the candidate December 2024 boundaries gives Croydon 792 collisions, with annual counts of 190, 200, 180 and 222 for 2022–2025. This establishes an available four-year data base, not adequate statistical power for an unspecified grid/test or proof of reporting comparability. Two recorded-Croydon events fall geometrically elsewhere and one recorded elsewhere falls inside Croydon; fewer code differences are a practical advantage, not the main selection reason.
+
+**Alternatives and limits:** Westminster (1,246 events) and Lambeth (743) remain defensible alternatives. Croydon is not claimed to be uniquely suitable or representative of London; a single-borough scope permits a focused analysis within the coursework's time and report limits. No hotspot significance results have been used to select the proposed case.
+
+**Period rationale:** 2022–2025 uses the four supplied annual input pairs and pools events for spatial description. Pooling can hide annual change, so retain annual counts and assess reporting/schema comparability; do not treat modest count variation as proof of unchanged reporting. The final period remains conditional on those checks.
+
+Before finalising the study area and producing its dataset:
+
+- Confirm the borough/period choice and record it before examining hotspot significance.
+- Complete the Croydon external-boundary history check for 2022–2025; ward reviews are not proof of unchanged external boundaries.
+- Agree the reference geography and point-membership policy, retaining code differences in the audit.
+- Examine candidate grid-count distributions, including zero-count and boundary cells, before choosing grid size, origin, weights, local statistic and one sensitivity check.
+
+**Draft report wording, subject to the decisions above:** “Croydon is proposed as a purposive case study because the varied local character recognised in its planning policy provides a relevant setting for examining within-borough concentrations of reported pedestrian injury collisions. Four years of supplied records provide a bounded analytical scope. Other boroughs may also be suitable, and the study does not claim that Croydon represents London as a whole.”
+
 ## Map inspection and report figures
 
 Use the existing Python workflow for spatial checks and map figures; no QGIS installation is required for this project. GeoPandas and Matplotlib provide reproducible maps, while browser inspection is supplementary. Final map layouts and captions must identify the data, mapped quantity, coordinate reference system and material limitations.
@@ -96,11 +117,11 @@ An external input folder can be supplied with `--data-dir`, provided it contains
 
 ### Run spatial validation
 
-[02_spatial_validation.ipynb](notebooks/02_spatial_validation.ipynb) has ten saved code-cell execution counts in sequence, 1–10, with no saved errors, including the context and selected-example maps. The latest export check retained all existing files and reported matching input hashes; it did not regenerate exports. All nine output files exist in `data/derived/spatial_validation_closure/`, and the run metadata records seven input hashes. Execution counts alone do not independently establish a fresh-kernel run.
+[02_spatial_validation.ipynb](notebooks/02_spatial_validation.ipynb) has ten saved code cells with sequential execution counts 11–20 and no saved errors. The corrected section 3.7 figure was visually inspected: the previously obscured central B-labels are readable and the collision-count map remains free of ID labels. The latest export check retained all existing files and reported matching input hashes; it did not regenerate exports. All nine output files exist in `data/derived/spatial_validation_closure/`, and the run metadata records seven input hashes. Execution counts alone do not independently establish a fresh-kernel run.
 
 For reproduction, use the documented environment and run from `notebooks/` with the candidate CSV, guide, boundary file, manifest and four original annual collision CSVs available. Notebook 02 works independently of notebook 01's kernel state, using its exported candidates.
 
-The notebook checks polygon validity, reconciles London codes, classifies membership, compares recorded codes and prepares a London context/diagnostic figure. Geographic-coordinate agreement remains `not_checked` by default until the datum evidence is configured; a decision tolerance also needs a rationale. No borough is automatically selected, and no hotspot statistic is calculated.
+The notebook checks polygon validity, reconciles London codes, classifies membership, compares recorded codes and prepares a London context/diagnostic figure. Section 3.7 keeps collision-count circles free of ID labels on the first map and places B-prefixed borough identifiers on the second map, with a matching name/count key. These identifiers are labels rather than counts; a borough locator is shown if no diagnostic cases exist. White-backed callouts prioritise readable IDs and may conceal individual points, so detailed cases remain inspectable through the audit and section 3.8. Geographic-coordinate agreement remains `not_checked` by default until the datum evidence is configured; a decision tolerance also needs a rationale. No borough is automatically selected, and no hotspot statistic is calculated.
 
 Validation outputs use the notebook's `OUTPUT_DIR`, currently `DATA_DIR / "derived" / "spatial_validation_closure"`. If any named output exists, the export cell skips all writes, lists existing/missing files and compares stored/current input hashes; choose another new `OUTPUT_DIR` before a future export. Matching input hashes do not establish unchanged code, settings or artifact contents, and the earlier six-file result set remains preserved in `data/derived/spatial_validation/`.
 
