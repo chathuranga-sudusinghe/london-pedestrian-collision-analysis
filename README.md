@@ -66,7 +66,7 @@ Select the project `.venv` interpreter. Original data and derived inputs are ign
 - [Reproduction](docs/reproduction.md): environment, input acquisition, execution and synthetic tests.
 - [Data sources and provenance](data/data.md): download links, definitions, checksums, preservation and reuse.
 - [Reference register](docs/references.md): source details, lecture connections and adoption status.
-- [Report figure evidence](evidence/README.md): opt-in map exports, source cells, caption guidance and pending checks.
+- [Report figure evidence](evidence/README.md): six saved PNGs, source cells, caption guidance and remaining attribution/layout checks.
 
 From the repository root with the environment active:
 

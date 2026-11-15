@@ -1,6 +1,21 @@
 # Methods and validation
 
-This document explains the analysis and its saved evidence. See the [project overview](../README.md#research-framework), [reproduction guide](reproduction.md), [data provenance](../data/data.md) and [reference register](references.md). Saved outputs are not an independent real-data rerun; execution counts alone do not establish a fresh-kernel run.
+This document explains the analysis and the saved evidence inspected after the reported manual reruns of notebooks 01–04. See the [project overview](../README.md#research-framework), [reproduction guide](reproduction.md), [data provenance](../data/data.md) and [reference register](references.md). Saved outputs are not an independent real-data rerun; execution counts alone do not establish a fresh-kernel run.
+
+## Saved execution and figure evidence
+
+All four notebooks contain saved outputs without saved errors. The saved-file inspection found the following execution metadata; this section records the detailed counts so other documents do not duplicate them.
+
+| Notebook | Saved execution counts |
+| --- | --- |
+| 01 | 1–14, all set |
+| 02 | 1–10, all set, including the final validation-export cell |
+| 03 | 9–16, all set |
+| 04 | 1–7, unset for `report-area-summary` (outputs present), then 9 for `maps`; `grid-functions` is 3 |
+
+Notebook 04's missing count is recorded without changing metadata. Saved counts, including a sequence starting above one in notebook 03, do not independently establish complete fresh-kernel execution.
+
+Six PNGs are present in `evidence/`: two original exports and four report/appendix exports. The saved messages in notebooks 02–04 report byte-identical current exports retained by the revised helper. The four report/appendix PNGs were visually inspected; complete attribution and final PDF-size review remain pending. See the [figure register](../evidence/README.md).
 
 ## Study frame and rationale
 
@@ -60,15 +75,17 @@ This is a custom area-based neighbourhood count test, not standard Getis–Ord G
 | --- | ---: | ---: |
 | Flagged focal cells | 74 / 415 | 276 / 1,520 |
 | Flagged focal area (km²) | 17.39 | 16.69 |
+| Flagged focal area (% of footprint) | 20.115 | 19.308 |
 | Events in flagged focal cells | 495 | 459 |
+| Events in flagged focal cells (% of events) | 62.500 | 57.955 |
 | Top neighbourhood observed / expected | 110 / 20.60923 | 122 / 21.181709 |
 | Top observed/expected ratio | 5.34 | 5.76 |
 
-Flagged focal areas overlap by 14.93 km², with a 19.16 km² union, 77.9% intersection-over-union and 85.8% of main flagged area reproduced at 250 m. No pass/fail overlap threshold is imposed; zero-denominator ratios remain missing. Maps show broadly consistent northern concentration and a larger southern outlying patch at 500 m. Sensitivity is not independent replication; separate BY families do not establish joint control across grids.
+The directly displayed footprint area is 86.466113 km². Flagged focal areas overlap by 14.93 km², with a 19.16 km² union, 77.9% intersection-over-union and 85.8% of main flagged area reproduced at 250 m. No pass/fail overlap threshold is imposed; zero-denominator ratios remain missing. Maps show broadly consistent northern concentration and a larger southern outlying patch at 500 m. Sensitivity is not independent replication; separate BY families do not establish joint control across grids.
 
 ## Validation scope and outstanding limitations
 
-The existing 21 synthetic tests extract pure notebook function definitions without running input cells. They check grid assignment, clipping, zeros, neighbourhood geometry, binomial tails against hand calculations and a high-precision oracle, BY adjustment, numerical underflow and focal-area overlap. They do not verify source provenance, calibrate the entire pipeline under simulation, validate the spatial null or establish map readability. See [test instructions](reproduction.md#synthetic-checks).
+The 21 grid/inference tests extract pure notebook function definitions without running input cells; seven additional mock-only export tests cover helper consistency, unchanged-file skips, replacement and failure handling (28 tests in total). They check grid assignment, clipping, zeros, neighbourhood geometry, binomial tails against hand calculations and a high-precision oracle, BY adjustment, numerical underflow and focal-area overlap. They do not verify source provenance, calibrate the entire pipeline under simulation, validate the spatial null or establish map readability. See [test instructions](reproduction.md#synthetic-checks).
 
 - Uniform land area does not model roads, junctions, pedestrian exposure, reporting differences or event dependence. BY cannot repair invalid null assumptions. Results are concentration relative to that benchmark, not risk, safety or causality.
 - Boundary windows exclude events outside the footprint. Grid sensitivity changes window geometry, test locations and multiplicity; more flagged cells do not establish a better grid.
@@ -76,3 +93,9 @@ The existing 21 synthetic tests extract pure notebook function definitions witho
 - Historical polygon identity is not claimed. Ward changes do not establish external borough changes ([R15–R16](references.md#r15)).
 - Reporting comparability, the custom extension's acceptance under the taught-method requirement, final product-specific map attribution and final input packaging remain outstanding. Lecture links teach relevant spatial concepts and Moran methods, not this exact test; adding a statistic does not itself resolve alignment.
 - Final figures and captions must identify the source, quantity, period, coordinate reference system and interpretation limits. Product-specific ONS/OS attribution must be verified before report reuse ([R06](references.md#r06)).
+
+## Practical implications and future work
+
+The identified concentrations provide a starting point for further road-safety investigation, rather than estimates of individual pedestrian risk or predictions of future collisions. Future work could combine pedestrian and vehicle flows with crossing provision, junction design, speed, lighting and collision circumstances to investigate factors associated with these patterns and inform potential interventions. Areas not flagged by this analysis should not be assumed safe.
+
+For the final report, connect these limitations and opportunities in the Results and Discussion section, with a brief statement of practical value in the conclusion. Additional data and an appropriate study design could strengthen the evidence; the current analysis does not establish causes or demonstrate that a particular intervention would be effective.

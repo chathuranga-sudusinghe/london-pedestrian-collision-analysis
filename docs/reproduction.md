@@ -51,9 +51,9 @@ The script downloads the official December 2024 BFE GeoPackage and checks suppli
 | Notebook | Purpose | File writes |
 | --- | --- | --- |
 | [01](../notebooks/01_data_understanding_preparation.ipynb) | Inspection, EDA and candidate preparation | Replaces the two named derived CSVs; never overwrites raw inputs |
-| [02](../notebooks/02_spatial_validation.ipynb) | London membership and diagnostics | Writes nine validation artifacts only if none of their names exists |
-| [03](../notebooks/03_croydon_grid_comparison.ipynb) | Croydon selection and descriptive grids | In-memory tables and figures; optional PNG map export, disabled by default |
-| [04](../notebooks/04_croydon_spatial_inference.ipynb) | Main inference and grid sensitivity | In-memory tables and figures; optional PNG map export, disabled by default |
+| [02](../notebooks/02_spatial_validation.ipynb) | London membership and diagnostics | Writes nine validation artifacts only if none of their names exists; optional membership-example PNG |
+| [03](../notebooks/03_croydon_grid_comparison.ipynb) | Croydon selection and descriptive grids | In-memory tables and figures; optional PNG map export, currently enabled |
+| [04](../notebooks/04_croydon_spatial_inference.ipynb) | Main inference and grid sensitivity | In-memory tables and figures; optional PNG map export, currently enabled |
 
 For an authorised manual run, open the required notebook, check its parameters, restart the kernel, run cells in order and save. Notebook 01 reads selected fields one year or collision/casualty pair at a time; its shared selection supports both EDA and preparation. Original files remain unchanged.
 
@@ -65,9 +65,13 @@ Notebooks 03/04 require the original boundary and guide, manifest, candidates, v
 
 ## Optional report figure exports
 
-Notebooks 03/04 retain inline plots and can additionally save selected existing maps to `evidence/`. No new maps or statistical methods are introduced. Set `EXPORT_FIGURES = True` in the relevant input cell before an authorised manual run; the default `False` performs no image writes. `FIGURE_DIR` defaults to `../evidence` from `notebooks/` and can be configured through `COMP1890_FIGURE_DIR`.
+Notebooks 02–04 keep their inline plots and can also save selected figures to `evidence/`. The current input settings enable exports (`EXPORT_FIGURES = True`); set `False` for inline-only operation. `FIGURE_DIR` defaults to `../evidence` from `notebooks/` and can be configured through `COMP1890_FIGURE_DIR`. The helper renders PNG bytes in memory, keeps byte-identical existing images unchanged, and replaces different images only after a complete temporary-file save in the same directory. No overwrite flag is needed. Rendering or writing failures before replacement preserve the existing PNG; temporary files are cleaned up. PNG output uses 300 dpi and a tight bounding box.
 
-Existing images raise `FileExistsError` unless `OVERWRITE_FIGURES = True`; inspect files before explicitly replacing them. Output uses 300 dpi PNG with a tight bounding box. See [export filenames, source cells and caption guidance](../evidence/README.md). Saved inline outputs predate the export-code update; no new run or exported-image review is implied. Final attribution and report-layout checks remain pending.
+Notebook 03 retains the original three-panel map, with its legacy PNG write disabled by `EXPORT_LEGACY_FIGURES = False`. New report cells create a collision/locator map and a 250/500 m grid comparison using different filenames. The locator reads the same verified boundary input and checks all 33 London codes; no new source dataset or statistical method is added. Notebook 04 displays actual footprint area and focal-cell area/event shares and uses a new `_report.png` filename for its revised map. Notebook 02 adds export support only for the existing membership examples.
+
+All six PNGs are present, including the location/locator map, two-panel count map, revised inference map and membership examples. Current saved outputs contain no errors and report unchanged PNGs retained by the revised helper; the four report/appendix exports have been visually inspected. See [saved execution evidence](methods-and-validation.md#saved-execution-and-figure-evidence) for the inspected metadata and remaining execution-evidence gap; counts must not be repaired by hand or treated as independent proof of a fresh-kernel run.
+
+See the [figure register, source cells, caption guidance and execution notes](../evidence/README.md). Final report attribution remains pending: the new map footers explicitly mark the OS copyright year as unverified rather than inventing it.
 
 ## Synthetic checks
 
@@ -77,4 +81,4 @@ From the repository root with the environment active:
 python -m unittest discover -s tests -v
 ```
 
-The 7 grid and 14 inference tests extract only pure function definitions. They use synthetic geometry/counts, including a high-precision Decimal binomial oracle and hand-calculated BY cases, and do not read real datasets or train models. They do not verify provenance, the spatial null or final figure readability. Execution counts and saved notebook outputs alone do not establish a fresh-kernel run.
+The 7 grid and 14 inference tests extract only pure function definitions. Seven additional export tests check the helpers in notebooks 02–04 using mocked files and in-memory bytes: disabled saving, identical-file skips, replacement order, failure handling and helper consistency. They use synthetic geometry/counts, including a high-precision Decimal binomial oracle and hand-calculated BY cases, and do not read real datasets or train models. They do not verify provenance, the spatial null or final figure readability. Execution counts and saved notebook outputs alone do not establish a fresh-kernel run.
