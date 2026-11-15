@@ -71,7 +71,7 @@ Notebook 03 retains the original three-panel map, with its legacy PNG write disa
 
 All six PNGs are present, including the location/locator map, two-panel count map, revised inference map and membership examples. Current saved outputs contain no errors and report unchanged PNGs retained by the revised helper; the four report/appendix exports have been visually inspected. See [saved execution evidence](methods-and-validation.md#saved-execution-and-figure-evidence) for the inspected metadata and remaining execution-evidence gap; counts must not be repaired by hand or treated as independent proof of a fresh-kernel run.
 
-See the [figure register, source cells, caption guidance and execution notes](../evidence/README.md). Final report attribution remains pending: the new map footers explicitly mark the OS copyright year as unverified rather than inventing it.
+See the [figure register, source cells, caption guidance and execution notes](../evidence/README.md). The map footers use 2025 as the OS copyright/database-right year, inferred from the boundary product's publication year because ONS metadata does not state it (see the attribution section of that register).
 
 ## Synthetic checks
 

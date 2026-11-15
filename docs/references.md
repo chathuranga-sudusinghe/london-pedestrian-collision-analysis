@@ -11,7 +11,7 @@ Keep dataset provenance in [data/data.md](../data/data.md) and completed downloa
 
 - **Author:** Department for Transport (DfT).
 - **Source:** [Road safety open data](https://www.gov.uk/government/statistical-data-sets/road-safety-open-data); annual 2022–2025 collision/casualty CSVs and the supplied 2025 Excel data guide, sheet `2024_code_list`.
-- **Access:** source page checked 13 November 2026; preserved file URLs and download timestamps are in the manifest.
+- **Access:** source page checked 11 November 2026; preserved file URLs and download timestamps are in the manifest.
 - **Use/status:** **used** for collision/casualty grain, eligibility and field definitions. Exact file links and cross-year comparability limitations are recorded in [data documentation](../data/data.md).
 
 <a id="r02"></a>
@@ -27,7 +27,7 @@ Keep dataset provenance in [data/data.md](../data/data.md) and completed downloa
 
 - **Author:** UK Government; publication date not recorded in this register.
 - **Title:** [UK Geospatial Data Standards Register](https://www.gov.uk/government/publications/uk-geospatial-data-standards-register/national-geospatial-data-standards-register).
-- **Location/access:** coordinate reference systems, OSGB36 / British National Grid; accessed 14 November 2026.
+- **Location/access:** coordinate reference systems, OSGB36 / British National Grid; accessed 13 November 2026.
 - **Use/status:** **used** with R02 to document EPSG:27700 for grid coordinates. This is documentary CRS evidence, not a point-accuracy check.
 
 <a id="r04"></a>
@@ -35,7 +35,7 @@ Keep dataset provenance in [data/data.md](../data/data.md) and completed downloa
 
 - **Author:** Office for National Statistics (ONS); publication date not confirmed.
 - **Title:** [Boundary Dataset Guidance: 2021 onwards](https://www.ons.gov.uk/file?uri=%2Faboutus%2Ftransparencyandgovernance%2Ffreedomofinformationfoi%2Fwestminsterconstituenciesforeachitl3%2Fboundarydatasetguidance2021onwards.pdf).
-- **Location/access:** pages 1–4, resolution, point allocation and coastal extent; accessed 14 November 2026.
+- **Location/access:** pages 1–4, resolution, point allocation and coastal extent; accessed 11 November 2026.
 - **Use/status:** **used** to plan full-resolution point-in-polygon allocation and distinguish analysis boundaries from generalised display boundaries. Vintage compatibility, geometry validity and coverage must still be inspected for the chosen input.
 
 <a id="r05"></a>
@@ -44,7 +44,7 @@ Keep dataset provenance in [data/data.md](../data/data.md) and completed downloa
 - **Author/vintage:** Office for National Statistics; boundaries as at December 2024.
 - **Title:** [Local Authority Districts (December 2024) Boundaries UK BFE](https://www.data.gov.uk/dataset/5d392106-7cb3-4214-90ac-4b46f16f0db3/local-authority-districts-december-2024-boundaries-uk-bfe).
 - **Metadata:** [official feature layer](https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Local_Authority_Districts_December_2024_Boundaries_UK_BFE/FeatureServer/0) and [ONS item](https://www.arcgis.com/home/item.html?id=a4d56f9755be48b0a78c120e499fa9df).
-- **Access:** metadata and count-only query inspected, followed by local-file verification, on 14 November 2026; the preserved download timestamp and checksum are in the manifest.
+- **Access:** metadata and count-only query inspected, followed by local-file verification, on 13 November 2026; the preserved download timestamp and checksum are in the manifest.
 - **Use/status:** **used** for London membership validation and the approved fixed December 2024 Croydon footprint. The preserved GeoPackage has EPSG:27700 metadata, fields `LAD24CD` and `LAD24NM`, and 33 unique London codes; notebook 02 records passing polygon-validity and guide-reconciliation checks. This does not establish identical historical boundaries throughout 2022–2025.
 
 <a id="r06"></a>
@@ -53,7 +53,7 @@ Keep dataset provenance in [data/data.md](../data/data.md) and completed downloa
 - **Author/date:** Office for National Statistics; page last updated 26 April 2022.
 - **Title:** [Licences](https://www.ons.gov.uk/methodology/geography/licences).
 - **Location/access:** digital boundaries and reference maps; accessed 14 November 2026.
-- **Use/status:** **used** for planned boundary attribution. ONS specifies Open Government Licence v3.0 accreditation and an OS copyright/database-right statement; retain the applicable year from the selected product rather than guessing it.
+- **Use/status:** **used** for planned boundary attribution. ONS specifies Open Government Licence v3.0 accreditation and an OS copyright/database-right statement; the map footers use 2025, inferred from the product's publication year because the licence page and item metadata give only "[year]".
 
 ## Spatial validation and implementation
 
@@ -62,7 +62,7 @@ Keep dataset provenance in [data/data.md](../data/data.md) and completed downloa
 
 - **Author:** Shapely contributors; rolling software documentation.
 - **Title:** [shapely.within](https://shapely.readthedocs.io/en/stable/reference/shapely.within.html).
-- **Location/access:** predicate definition and polygon-boundary example; accessed 14 November 2026.
+- **Location/access:** predicate definition and polygon-boundary example; accessed 13 November 2026.
 - **Use/status:** **used** implementation reference for distinguishing strict interior membership from boundary intersections. A point on a polygon boundary is not within its interior; unmatched, boundary and multiple matches need separate audit categories.
 
 <a id="r08"></a>
@@ -70,7 +70,7 @@ Keep dataset provenance in [data/data.md](../data/data.md) and completed downloa
 
 - **Author:** pyproj contributors; rolling software documentation.
 - **Title:** [Transformer](https://pyproj4.github.io/pyproj/stable/api/transformer.html).
-- **Location/access:** `Transformer`, `TransformerGroup`, unavailable operations and transformation-grid controls; accessed 14 November 2026.
+- **Location/access:** `Transformer`, `TransformerGroup`, unavailable operations and transformation-grid controls; accessed 13 November 2026.
 - **Use/status:** **candidate** implementation reference for logging transformation choice and missing grids. Confirm the geographic source datum first, and justify any agreement tolerance using coordinate precision and transformation accuracy alongside observed offsets.
 
 ## Lecture alignment and spatial visualisation
@@ -154,7 +154,7 @@ The supplied slide text and hyperlinks were inspected on 14 November 2026; image
 
 - **Author:** London Borough of Croydon.
 - **Sources:** [Council Local Plan 2018 page](https://www.croydon.gov.uk/planning-and-regeneration/planning-policy/croydons-development-plan/local-plan-2018), [adopted plan: We are Croydon](https://www.planvu.co.uk/croydon2018/written/lp/cpt3.php) and [Urban Design and Local Character](https://www.planvu.co.uk/croydon2018/written/lp/cpt6.php).
-- **Location/access:** section 3.2, under “Past Visions”, briefly mentions urban and suburban areas; policy SP4.1 recognises varied local character; inspected 14 November 2026.
+- **Location/access:** section 3.2, under “Past Visions”, briefly mentions urban and suburban areas; policy SP4.1 recognises varied local character; inspected 12 November 2026.
 - **Use/status:** **used** to document the rationale for the approved purposive Croydon case study. This qualitative planning context is not a current land-use survey or measured heterogeneity assessment and does not establish causal effects, London-wide representativeness, statistical power or unchanged external boundaries during 2022–2025; the approved scope uses a fixed December 2024 footprint.
 
 <a id="r19"></a>
@@ -162,7 +162,7 @@ The supplied slide text and hyperlinks were inspected on 14 November 2026; image
 
 - **Author:** Department for Transport.
 - **Title:** [STATS19 collection and use: initial impacts of transition to the 2024 specification](https://www.gov.uk/government/publications/stats19-collection-and-use-impacts-of-the-2024-specification/stats19-collection-and-use-initial-impacts-of-transition-to-the-2024-specification).
-- **Updated/access:** updated 24 September 2026; inspected 14 November 2026.
+- **Updated/access:** updated 24 September 2026; inspected 11 November 2026.
 - **Use/status:** **used** to document gradual specification adoption, changed variables and injury-severity collection as comparability limitations. This does not establish uniform reporting or explain Croydon's annual counts. Including all fatal, serious and slight collisions means that a pure serious/slight reclassification would not change eligibility; this is a consequence of the selection rule, not evidence that total reporting was unaffected.
 
 
@@ -182,5 +182,5 @@ The supplied slide text and hyperlinks were inspected on 14 November 2026; image
 - **Author:** R Core Team; rolling R statistical documentation.
 - **Title:** [Adjust P-values for Multiple Comparisons](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/p.adjust.html).
 - **Location/access:** BY correction and general dependence; accessed 15 November 2026.
-- **Research reference listed by the documentation:** Benjamini, Y. and Yekutieli, D. (2001), [The Control of the False Discovery Rate in Multiple Testing under Dependency](https://doi.org/10.1214/aos/1013699998), *The Annals of Statistics*, 29(4). The documentation was inspected; the original paper was not independently read for this implementation.
+- **Research reference listed by the documentation:** Benjamini, Y. and Yekutieli, D. (2001), [The Control of the False Discovery Rate in Multiple Testing under Dependency](https://doi.org/10.1214/aos/1013699998), *The Annals of Statistics*, 29(4). The documentation was inspected, and the original paper's introduction and Theorem 1.3 (Benjamini–Hochberg procedure with q divided by the harmonic sum, controlling the false discovery rate under arbitrary dependence) were read on 15 November 2026 from the [author-hosted copy](https://www.math.tau.ac.il/~ybenja/MyPapers/benjamini_yekutieli_ANNSTAT2001.pdf). The remainder of the paper, including its proof, was not reviewed.
 - **Use/status:** **used** to specify dependence-robust false discovery rate correction in notebook 04's implementation. For m ordered p-values, use the reverse cumulative minimum of m H_m p_(k) / k, capped at one, with H_m = sum(1/j, j=1..m); Python evaluates this in log space. Apply separately across the complete 500 m and 250 m families at 5%; this does not establish joint control across both grids or correct invalid model assumptions. Teaching alignment of the custom area-based test remains unconfirmed; R12 and R13 are not evidence that this method is standard Gi* or explicitly taught.
