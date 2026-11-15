@@ -6,7 +6,7 @@ See the [README research framework](../README.md#research-framework) for the res
 
 ## Official source and coverage
 
-[Department for Transport (DfT): Road safety open data](https://www.gov.uk/government/statistical-data-sets/road-safety-open-data). Source page checked on 13 November 2026.
+[Department for Transport (DfT): Road safety open data](https://www.gov.uk/government/statistical-data-sets/road-safety-open-data). Source page checked on 11 November 2026.
 
 The source covers police-reported personal injury collisions on public roads in Great Britain. It does not represent every collision or every pedestrian injury. The DfT page identifies 2025 as the latest full year of final validated data; the approved 2022–2025 period still requires explicit reporting-comparability limitations alongside record-level completeness checks.
 
@@ -63,7 +63,7 @@ Raw fields are retained alongside numeric/date representations and quality flags
 
 Recorded London codes, Heathrow, blanks, the predates-code category and unrecognised codes are distinguished explicitly. National candidates remain available to investigate code/geometry disagreement. `local_authority_district = -1` means Code deprecated, not ordinary missingness.
 
-[DfT methodology](https://www.gov.uk/government/statistics/matching-stats19-collision-data-to-a-road-network-feasibility/matching-stats19-collisions-to-a-road-network-feasibility) and the [government CRS register](https://www.gov.uk/government/publications/uk-geospatial-data-standards-register/national-geospatial-data-standards-register) support British National Grid / EPSG:27700 for grid coordinates, with sources checked on 14 November 2026. This documentary reference does not validate individual points. The supplied guide does not specify the longitude/latitude datum, so cross-representation checks remain pending.
+[DfT methodology](https://www.gov.uk/government/statistics/matching-stats19-collision-data-to-a-road-network-feasibility/matching-stats19-collisions-to-a-road-network-feasibility) and the [government CRS register](https://www.gov.uk/government/publications/uk-geospatial-data-standards-register/national-geospatial-data-standards-register) support British National Grid / EPSG:27700 for grid coordinates, with the DfT methodology page checked on 14 November 2026 and the CRS register on 13 November 2026. This documentary reference does not validate individual points. The supplied guide does not specify the longitude/latitude datum, so cross-representation checks remain pending.
 
 The saved merged-notebook export reports 74,682 rows and the candidate CSV has 38 columns. Both `data/derived/pedestrian_collision_candidates.csv` and `data/derived/preparation_log.csv` exist and remain ignored by Git. The documented boundary checks and Python maps support geographic validation; browser inspection provides supplementary evidence.
 
