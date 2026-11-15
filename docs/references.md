@@ -2,7 +2,7 @@
 
 This register records sources for the analysis and later PDF report; it is not a finished bibliography. **Used** means cited in the current project, **candidate** means inspected for a proposed method or input, and **background** means contextual reading. Convert used entries to the required report citation style once that style is confirmed.
 
-Keep dataset provenance in [data/data.md](data/data.md) and completed download records in [data/download-manifest.json](data/download-manifest.json). Cite references beside the notebook method or claim they support. Do not interpret a candidate source as an implemented method or a validated result.
+Keep dataset provenance in [data/data.md](../data/data.md) and completed download records in [data/download-manifest.json](../data/download-manifest.json). Cite references beside the notebook method or claim they support. Do not interpret a candidate source as an implemented method or a validated result.
 
 ## Data, boundaries and coordinate systems
 
@@ -12,7 +12,7 @@ Keep dataset provenance in [data/data.md](data/data.md) and completed download r
 - **Author:** Department for Transport (DfT).
 - **Source:** [Road safety open data](https://www.gov.uk/government/statistical-data-sets/road-safety-open-data); annual 2022–2025 collision/casualty CSVs and the supplied 2025 Excel data guide, sheet `2024_code_list`.
 - **Access:** source page checked 13 November 2026; preserved file URLs and download timestamps are in the manifest.
-- **Use/status:** **used** for collision/casualty grain, eligibility and field definitions. Exact file links and cross-year comparability limitations are recorded in [data documentation](data/data.md).
+- **Use/status:** **used** for collision/casualty grain, eligibility and field definitions. Exact file links and cross-year comparability limitations are recorded in [data documentation](../data/data.md).
 
 <a id="r02"></a>
 ### R02 — STATS19 authoritative grid coordinates
