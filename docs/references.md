@@ -2,7 +2,7 @@
 
 This register records sources for the analysis and later PDF report; it is not a finished bibliography. **Used** means cited in the current project, **candidate** means inspected for a proposed method or input, and **background** means contextual reading. Convert used entries to the required report citation style once that style is confirmed.
 
-Keep dataset provenance in [data/data.md](data/data.md) and completed download records in [data/download-manifest.json](data/download-manifest.json). Cite references beside the notebook method or claim they support. Do not interpret a candidate source as an implemented method or a validated result.
+Keep dataset provenance in [data/data.md](../data/data.md) and completed download records in [data/download-manifest.json](../data/download-manifest.json). Cite references beside the notebook method or claim they support. Do not interpret a candidate source as an implemented method or a validated result.
 
 ## Data, boundaries and coordinate systems
 
@@ -12,7 +12,7 @@ Keep dataset provenance in [data/data.md](data/data.md) and completed download r
 - **Author:** Department for Transport (DfT).
 - **Source:** [Road safety open data](https://www.gov.uk/government/statistical-data-sets/road-safety-open-data); annual 2022–2025 collision/casualty CSVs and the supplied 2025 Excel data guide, sheet `2024_code_list`.
 - **Access:** source page checked 13 November 2026; preserved file URLs and download timestamps are in the manifest.
-- **Use/status:** **used** for collision/casualty grain, eligibility and field definitions. Exact file links and cross-year comparability limitations are recorded in [data documentation](data/data.md).
+- **Use/status:** **used** for collision/casualty grain, eligibility and field definitions. Exact file links and cross-year comparability limitations are recorded in [data documentation](../data/data.md).
 
 <a id="r02"></a>
 ### R02 — STATS19 authoritative grid coordinates
@@ -123,7 +123,7 @@ The supplied slide text and hyperlinks were inspected on 14 November 2026; image
 - **Author:** GeoPandas developers; rolling software documentation.
 - **Sources:** [installation](https://geopandas.org/en/stable/getting_started/install.html), [read_file](https://geopandas.org/en/stable/docs/reference/api/geopandas.read_file.html) and [sjoin](https://geopandas.org/en/stable/docs/reference/api/geopandas.sjoin.html).
 - **Access:** 14 November 2026; published package versions checked through the Python Package Index on the same date.
-- **Use/status:** **used** for the validation notebook and dependency specification. Spatial packages are installed and recorded in the saved run; the saved nine-cell execution includes corrected highway-status summaries and a successful nine-file export with seven input hashes. The documentation is rolling, so retain the actual package versions with results.
+- **Use/status:** **used** for the validation notebook and dependency specification. Spatial packages are installed and recorded in the saved run; saved validation evidence includes corrected highway-status summaries and nine protected export artifacts with seven input hashes. The saved export message reports retained files and matching inputs; no new validation-artifact generation is claimed. See [saved execution evidence](methods-and-validation.md#saved-execution-and-figure-evidence) for execution metadata. The documentation is rolling, so retain the actual package versions with results.
 
 <a id="r15"></a>
 ### R15 — Ward reviews and external council boundaries
@@ -147,7 +147,7 @@ The supplied slide text and hyperlinks were inspected on 14 November 2026; image
 - **Author:** Mapshaper contributors; rolling software documentation.
 - **Sources:** [GeoPackage support](https://mapshaper.org/docs/formats/geopackage.html) and [attribute inspection](https://mapshaper.org/docs/reference.html#-inspect).
 - **Access:** documentation and browser workflow inspected 14 November 2026; deployed application version not recorded.
-- **Use/status:** **used** for supplementary rendering and attribute inspection of the exported GeoPackage. Two example records were checked against the exported audit; the browser check does not independently validate coordinate accuracy. Screenshots are local evidence, not notebook dependencies; Python remains the primary analytical workflow.
+- **Use/status:** **used** for supplementary rendering and attribute inspection of the exported GeoPackage. Two example records were checked against the exported audit; the browser check does not independently validate coordinate accuracy. Previously documented browser screenshots are unavailable in the current working copy and are not notebook dependencies; saved Python maps remain the primary reproducible visual evidence.
 
 <a id="r18"></a>
 ### R18 — Croydon case-study context

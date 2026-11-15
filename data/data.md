@@ -2,7 +2,7 @@
 
 ## Study scope
 
-See the [README research framework](../README.md#research-framework) for the research questions, collision-counting definition, study scope and provisional decisions.
+See the [README research framework](../README.md#research-framework) for the research questions, collision-counting definition, study scope and links to the adopted methods.
 
 ## Official source and coverage
 
@@ -41,7 +41,7 @@ The original inputs are in the repository-root `data/` directory. The notebook i
 
 Keep the `data/` and `notebooks/` folders together when packaging the project. Alternatively, configure an external input directory using `COMP1890_DATA_DIR` or the notebook’s `DATA_DIR` setting. Do not require a particular username, repository name or absolute filesystem location.
 
-Originals remain unchanged and derived outputs are stored separately with preparation flags and a log. The original December 2024 ONS UK BFE boundary GeoPackage is preserved; notebook 02 records geometry validation, while temporal suitability remains unresolved.
+Originals remain unchanged and derived outputs are stored separately with preparation flags and a log. The original December 2024 ONS UK BFE boundary GeoPackage is preserved; notebook 02 records geometry validation, without establishing historically identical boundaries.
 
 ## Verification status
 
@@ -53,11 +53,11 @@ Originals remain unchanged and derived outputs are stored separately with prepar
 
 **Saved London quality results:** the evaluated date, ID-composition, district and grid/longitude-latitude range flags are zero for the recorded-London subset. Its repeated-grid flags affect 16 records within years and 66 in the pooled-national comparison, with all events retained. These counts describe flagged records rather than distinct location pairs and do not establish positional accuracy.
 
-**Remaining spatial checks:** preparation-stage spatial flags remain `not_checked`; notebook 02 supplies later London membership evidence, while coordinate-representation agreement remains unperformed. Croydon and 2022–2025 are approved using the December 2024 footprint as fixed geography; notebook 03 applies that study frame without claiming historically identical boundaries. The approved neighbourhood-count inference design is implemented in notebook 04 with saved results; acceptance of this extension under the taught-method requirement remains to be confirmed.
+**Remaining spatial checks:** preparation-stage spatial flags remain `not_checked`; notebook 02 supplies later London membership evidence. Coordinate-representation agreement remains unperformed because the geographic datum is unresolved. See [methods and limitations](../docs/methods-and-validation.md#validation-scope-and-outstanding-limitations) for subsequent analytical decisions and outstanding issues.
 
 ## Preparation rules and derived candidates
 
-The cleaning rules and audit are now in Task 2 of [01_data_understanding_preparation.ipynb](../notebooks/01_data_understanding_preparation.ipynb). All 14 code cells have saved execution counts in sequence with no saved errors, and the export cell reports completion.
+The cleaning rules and audit are in Task 2 of [01_data_understanding_preparation.ipynb](../notebooks/01_data_understanding_preparation.ipynb); the saved export reports completion.
 
 Raw fields are retained alongside numeric/date representations and quality flags, without filling missing values or deleting repeated locations. Optional attributes never determine collision eligibility.
 
@@ -67,58 +67,26 @@ Recorded London codes, Heathrow, blanks, the predates-code category and unrecogn
 
 The saved merged-notebook export reports 74,682 rows and the candidate CSV has 38 columns. Both `data/derived/pedestrian_collision_candidates.csv` and `data/derived/preparation_log.csv` exist and remain ignored by Git. The documented boundary checks and Python maps support geographic validation; browser inspection provides supplementary evidence.
 
-## Candidate boundary input
+## Boundary input
 
-The [ONS December 2024 UK BFE district boundaries](../references.md#r05) are the current candidate for spatial membership checks. The preserved file contains layer `LAD_DEC_24_UK_BFE`, a MULTIPOLYGON geometry column, EPSG:27700 metadata and 361 UK features, including 33 unique London district codes. The saved spatial-validation run passes polygon-validity and guide-code reconciliation checks; temporal suitability remains unresolved.
+The [ONS December 2024 UK BFE district boundaries](../docs/references.md#r05) are used for spatial membership checks and the fixed Croydon footprint. The preserved file contains layer `LAD_DEC_24_UK_BFE`, a MULTIPOLYGON geometry column, EPSG:27700 metadata and 361 UK features, including 33 unique London district codes. The saved spatial-validation run passes polygon-validity and guide-code reconciliation checks; historically identical boundaries are not established or assumed.
 
-Full-resolution allocation and licensing guidance are recorded in the [reference register](../references.md#r04).
+Full-resolution allocation and licensing guidance are recorded in the [reference register](../docs/references.md#r04).
 
 The prepared [boundary acquisition script](../scripts/download_boundaries.py) downloads the original GeoPackage and appends its retrieval metadata, SHA-256 and initial format checks to the manifest. Its completed download is 163,885,056 bytes, and a read-only local check confirms the manifest size and SHA-256. The script records the ONS licence reference; confirm the product-specific attribution and applicable copyright year before reproducing maps.
 
-The manifest now records the stable download URL and resolved host/path without signed query parameters, timestamp, size, checksum, publisher, boundary vintage, licence reference and initial format checks. The boundary SHA-256 is `a421a026170391ade115e7424b8c4e06e682e0290978b827e03941b38b8e9475`. The December 2024 vintage must be justified for the final period, with any relevant boundary changes documented.
+The manifest now records the stable download URL and resolved host/path without signed query parameters, timestamp, size, checksum, publisher, boundary vintage, licence reference and initial format checks. The boundary SHA-256 is `a421a026170391ade115e7424b8c4e06e682e0290978b827e03941b38b8e9475`. The analysis uses this vintage as fixed reference geography, without assuming identical year-specific boundaries.
 
-## Spatial-validation results and status
+## Spatial analysis and validation evidence
 
-[02_spatial_validation.ipynb](../notebooks/02_spatial_validation.ipynb) has ten saved code cells with sequential execution counts 11–20 and no saved errors, including both Python inspection maps and the corrected second-map borough identifiers. The previously obscured central B-labels are readable in the visually inspected saved figure; execution counts alone do not establish a fresh-kernel run. The latest export check retained existing files and reported matching input hashes; it did not regenerate the nine-file result set. It audits all national candidates against the 33 London districts, retaining invalid-coordinate and ambiguous cases rather than assigning them automatically. Its CSV audits and GeoPackage exports are validation evidence, not a final cleaned borough dataset.
-
-The geographic source datum remains unresolved, so coordinate-representation agreement is not enabled by default.
-
-Polygon-validity and district-reconciliation safeguards pass, with no positive-area overlaps and 17,613 unique London interior memberships. The 199 recorded/geometric code differences comprise 182 London district differences and 17 Heathrow-coded events inside Hillingdon.
-
-All nine validation files exist in `data/derived/spatial_validation_closure/`, including `district_difference_diagnostics.csv`, `district_differences_by_year.csv` and `district_differences_by_pair.csv`. The exported `validation_run.json` records seven input hashes: boundary, guide, candidates and four annual collision files. Earlier six-file exports remain protected in `data/derived/spatial_validation/`.
-
-The saved diagnostics report 182 London district differences between shared-edge borough pairs, with distances of approximately 0.015–42.66 m to the recorded district polygons. All 182 current highway codes match geometric membership, while all 182 original highway codes differ; exported yearly status counts reconcile with collision totals. These comparisons do not independently validate positional accuracy or establish the cause of the differences.
-
-The diagnostic code retrieves `local_authority_highway` and `local_authority_highway_current` from the original collision CSVs, verifying manifest hashes, unique keys, year consistency, join coverage and recorded-district agreement. It measures point-to-recorded-district distance in EPSG:27700 metres, classifies pair topology and summarises by year and directed borough pair without correcting records or applying a distance cutoff. The guide describes the current highway field as derived from recorded locations, so agreement is not independent evidence of positional accuracy.
-
-Keep longitude/latitude agreement explicitly unperformed while using the documented grid coordinates for analysis. December 2024 is the approved fixed reference geography for Croydon; the inspected official history summaries do not establish unchanged London polygons throughout 2022–2025, and ward changes must be distinguished from external borough changes: [R15–R16](../references.md#r15). Reporting comparability and final report-map layout and attribution still require review. The fixed-footprint design does not depend on proving that every historical boundary was identical.
-
-## Approved Croydon study frame
-
-[03_croydon_grid_comparison.ipynb](../notebooks/03_croydon_grid_comparison.ipynb) has six saved code cells with sequential execution counts 1–6 and no saved errors; both saved figures have been visually inspected. It independently verifies the saved candidate and validation evidence, selects unique interior Croydon events for 2022–2025, and checks the saved annual baseline of 190 / 200 / 180 / 222 events. The saved selection reproduces 792 unique collisions, all strictly inside the footprint, with annual counts matching the baseline. Original records and historical validation metadata are preserved; no selected-data file or grid export is generated.
-
-The saved 100 m / 250 m / 500 m grids retain 9,006 / 1,520 / 415 cells and count all 792 events at each size. Zero-count shares are 94.1% / 76.9% / 55.4%, while partial cells contain 20 / 41 / 74 events. These are descriptive results, and sequential execution counts alone do not independently establish a fresh-kernel run.
-
-The descriptive comparison uses 100 m, 250 m and 500 m grids anchored at British National Grid (0, 0), retains all positive-area footprint intersections and zero-count cells, and assigns each collision exactly once. Partial-cell areas and their event totals are reported to expose unequal support; notebook 03 does not select a final grid or local statistic. Reporting changes under the 2024 STATS19 specification remain a limitation to assess ([R19](../references.md#r19)); a serious/slight reclassification alone does not change eligibility when all injury severities are included, but this does not establish complete or constant reporting.
-
-## Spatial-inference results and limitations
-
-[04_croydon_spatial_inference.ipynb](../notebooks/04_croydon_spatial_inference.ipynb) has saved results for the approved 500 m main and 250 m sensitivity analyses, with eight saved code-cell execution counts 1–8 and no saved error outputs. The tables and regenerated two-panel figure, including the corrected focal-cell legend, have been inspected; counts alone do not independently establish a fresh-kernel run. It reproduces notebook 03's hash and selection safeguards from the same supplied inputs, including the original boundary, rather than relying on an earlier kernel. No new source dataset, download, data export or correction of original records is introduced.
-
-Both grids retain all positive-area intersections and zeros, with binary 850 m full-square-centre neighbourhoods including the focal cell. Under independent uniform event placement conditional on the selected total, neighbourhood counts have binomial upper tails based on clipped area shares; BY correction is applied across all cells separately per grid. The model is a land-area benchmark, not road availability, pedestrian exposure or a realistic collision-generating process; it is not standard Gi*.
-
-The saved results count 792 collisions at both sizes and flag 74 of 415 focal cells at 500 m (17.39 km²; 495 collisions) and 276 of 1,520 at 250 m (16.69 km²; 459 collisions). Flagged focal-cell areas overlap by 14.93 km², with 77.9% intersection-over-union and 85.8% of the primary flagged area reproduced at 250 m. The inspected maps show a broadly consistent northern concentration, with differences in smaller patches.
-
-Synthetic numerical and geometric tests do not verify original-data provenance or establish the validity of the null. Reporting comparability, coordinate-representation agreement, teaching alignment and final map attribution remain outstanding; see [README](../README.md#croydon-spatial-inference) and [R20–R21](../references.md#r20).
+See [methods and validation](../docs/methods-and-validation.md#spatial-membership-validation) for the London membership audit, Croydon study frame, grid comparison, inference results and limitations. The December 2024 footprint is fixed reference geography; historically identical boundaries are not claimed. Coordinate-representation agreement remains unperformed.
 
 ## Attribution and reuse
 
 Cite the DfT source page, the relevant files, the data guide and the access date in the report. The source page links to the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/); check applicable dataset terms and attribution before redistributing inputs. Boundary data will need their own source and licence record.
 
-Acquisition-time `not_checked` fields in the manifest describe the download stage; notebook 02 provides the later geometry and code-reconciliation evidence. Reproduction of ignored inputs is described in the [README](../README.md#reproduce-the-ignored-inputs).
+Acquisition-time `not_checked` fields in the manifest describe the download stage; notebook 02 provides the later geometry and code-reconciliation evidence. Reproduction of ignored inputs is described in the [reproduction guide](../docs/reproduction.md#reproduce-the-ignored-inputs).
 
 ## Supplementary browser inspection
 
-Mapshaper displayed 33 boundary polygons and 17,613 validation points. The inspected records were `2022010376283` (matching Lambeth codes) and `2022010354125` (recorded Westminster, geometric Brent), consistent with the exported audit. The latter record's distance to the recorded polygon is approximately 2.16 m in the diagnostic CSV; browser inspection does not independently verify its real-world location.
-
-Eight browser screenshots are preserved locally in ignored `data/screenshots/`; notebook execution does not require them. No QGIS inspection was performed or is required by the chosen workflow. Python example maps and their evidence table are saved in notebook 02; existing exports are unchanged. Their distances to the recorded polygons are 0 m for the matching Lambeth example and approximately 2.16 m for the Westminster/Brent example; the first is an interior-point polygon distance, not a boundary distance.
+The [methods document](../docs/methods-and-validation.md#supplementary-map-inspection) records browser inspection and notebook 02's saved example maps. The previously documented eight screenshots are unavailable in this working copy; their location remains unverified. They are not notebook inputs. Verify and package any genuine screenshots used in the submission.
