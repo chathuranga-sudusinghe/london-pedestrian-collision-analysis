@@ -4,16 +4,9 @@ This document explains the analysis and the saved evidence inspected after the r
 
 ## Saved execution and figure evidence
 
-All four notebooks contain saved outputs without saved errors. The saved-file inspection found the following execution metadata; this section records the detailed counts so other documents do not duplicate them.
+All four notebooks contain saved outputs without saved errors, and their numerical summaries agree with the documented results. Inspect the notebooks themselves for current execution metadata; individual counts are not duplicated here because they can change when cells are rerun or saved.
 
-| Notebook | Saved execution counts |
-| --- | --- |
-| 01 | 1–14, all set |
-| 02 | 1–10, all set, including the final validation-export cell |
-| 03 | 9–16, all set |
-| 04 | 1–7, unset for `report-area-summary` (outputs present), then 9 for `maps`; `grid-functions` is 3 |
-
-Notebook 04's missing count is recorded without changing metadata. Saved counts, including a sequence starting above one in notebook 03, do not independently establish complete fresh-kernel execution.
+Saved outputs and figure-export messages provide execution evidence, but do not independently establish a complete fresh-kernel run. Unset or nonsequential counts should be assessed alongside source dependencies and saved results, without manually repairing metadata.
 
 Six PNGs are present in `evidence/`: two original exports and four report/appendix exports. The saved messages in notebooks 02–04 report byte-identical current exports retained by the revised helper. The four report/appendix PNGs were visually inspected; complete attribution and final PDF-size review remain pending. See the [figure register](../evidence/README.md).
 
