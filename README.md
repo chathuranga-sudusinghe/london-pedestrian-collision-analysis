@@ -45,7 +45,7 @@ Use the existing Python workflow for spatial checks and map figures; no QGIS ins
 
 Mapshaper was used to view the 33 London boundary polygons and 17,613 validation points and inspect two collision records. Record `2022010376283` had matching Lambeth codes; `2022010354125` had recorded Westminster and geometric Brent codes, consistent with the exported audit. This checks rendering and attribute consistency rather than independently verifying locations or reviewing all disagreements.
 
-Eight screenshots are stored locally in ignored `data/screenshots/`; they are not notebook inputs and are not supplied by cloning the repository. Select relevant genuine screenshots for the final submission and package any used evidence explicitly; temporary drawn symbols are not collision records. The Python inspection maps in notebook 02 have saved outputs and do not depend on those screenshots.
+The previously documented eight browser screenshots are unavailable in this working copy; their location and availability remain unverified. Screenshots are not notebook inputs and are not supplied by cloning the repository. If genuine screenshots are used in the final submission, verify and package them explicitly; temporary drawn symbols are not collision records. The Python inspection maps in notebook 02 have saved outputs and do not depend on those screenshots.
 
 ## Project structure
 
