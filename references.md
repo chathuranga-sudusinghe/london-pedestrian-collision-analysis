@@ -164,3 +164,23 @@ The supplied slide text and hyperlinks were inspected on 14 November 2026; image
 - **Title:** [STATS19 collection and use: initial impacts of transition to the 2024 specification](https://www.gov.uk/government/publications/stats19-collection-and-use-impacts-of-the-2024-specification/stats19-collection-and-use-initial-impacts-of-transition-to-the-2024-specification).
 - **Updated/access:** updated 24 September 2026; inspected 14 November 2026.
 - **Use/status:** **used** to document gradual specification adoption, changed variables and injury-severity collection as comparability limitations. This does not establish uniform reporting or explain Croydon's annual counts. Including all fatal, serious and slight collisions means that a pure serious/slight reclassification would not change eligibility; this is a consequence of the selection rule, not evidence that total reporting was unaffected.
+
+
+## Local concentration inference
+
+<a id="r20"></a>
+### R20 — Binomial neighbourhood-count probabilities
+
+- **Author:** R Core Team; rolling R statistical documentation.
+- **Title:** [The Binomial Distribution](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Binomial.html).
+- **Location/access:** distribution definition, probability mass, upper-tail and log-probability conventions; accessed 15 November 2026.
+- **Use/status:** **used** for the probability distribution in notebook 04's implementation. Under independent uniform placement of N events over a fixed footprint, membership of a specified neighbourhood is a Bernoulli outcome with probability equal to its clipped area share, so the neighbourhood count is binomial. This application is an explicit model derivation, not a claim that R documentation validates a road-collision null. Python evaluates the discrete upper-tail sum in log space with existing dependencies; it does not call R or reproduce R's internal numerical algorithm.
+
+<a id="r21"></a>
+### R21 — Benjamini–Yekutieli multiple-testing correction
+
+- **Author:** R Core Team; rolling R statistical documentation.
+- **Title:** [Adjust P-values for Multiple Comparisons](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/p.adjust.html).
+- **Location/access:** BY correction and general dependence; accessed 15 November 2026.
+- **Research reference listed by the documentation:** Benjamini, Y. and Yekutieli, D. (2001), [The Control of the False Discovery Rate in Multiple Testing under Dependency](https://doi.org/10.1214/aos/1013699998), *The Annals of Statistics*, 29(4). The documentation was inspected; the original paper was not independently read for this implementation.
+- **Use/status:** **used** to specify dependence-robust false discovery rate correction in notebook 04's implementation. For m ordered p-values, use the reverse cumulative minimum of m H_m p_(k) / k, capped at one, with H_m = sum(1/j, j=1..m); Python evaluates this in log space. Apply separately across the complete 500 m and 250 m families at 5%; this does not establish joint control across both grids or correct invalid model assumptions. Teaching alignment of the custom area-based test remains unconfirmed; R12 and R13 are not evidence that this method is standard Gi* or explicitly taught.
