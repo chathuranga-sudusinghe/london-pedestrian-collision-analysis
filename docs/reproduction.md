@@ -52,8 +52,8 @@ The script downloads the official December 2024 BFE GeoPackage and checks suppli
 | --- | --- | --- |
 | [01](../notebooks/01_data_understanding_preparation.ipynb) | Inspection, EDA and candidate preparation | Replaces the two named derived CSVs; never overwrites raw inputs |
 | [02](../notebooks/02_spatial_validation.ipynb) | London membership and diagnostics | Writes nine validation artifacts only if none of their names exists |
-| [03](../notebooks/03_croydon_grid_comparison.ipynb) | Croydon selection and descriptive grids | In-memory tables and figures; no dataset exports |
-| [04](../notebooks/04_croydon_spatial_inference.ipynb) | Main inference and grid sensitivity | In-memory tables and figures; no dataset exports |
+| [03](../notebooks/03_croydon_grid_comparison.ipynb) | Croydon selection and descriptive grids | In-memory tables and figures; optional PNG map export, disabled by default |
+| [04](../notebooks/04_croydon_spatial_inference.ipynb) | Main inference and grid sensitivity | In-memory tables and figures; optional PNG map export, disabled by default |
 
 For an authorised manual run, open the required notebook, check its parameters, restart the kernel, run cells in order and save. Notebook 01 reads selected fields one year or collision/casualty pair at a time; its shared selection supports both EDA and preparation. Original files remain unchanged.
 
@@ -62,6 +62,12 @@ Notebook 02 requires candidates, guide, manifest, boundary and four original ann
 Notebooks 03/04 require the original boundary and guide, manifest, candidates, validation audit, borough evidence and `validation_run.json`. They verify source hashes and stop on mismatches rather than mixing candidate versions with older validation evidence. If candidates change after notebook 01 runs, validate those inputs in notebook 02 and use the corresponding new export directory. Matching hashes alone do not prove artifact contents or positional accuracy.
 
 `COMP1890_DATA_DIR` supports external inputs. Notebooks 03/04 also accept `COMP1890_VALIDATION_DIR` and `COMP1890_BOUNDARY_PATH`; the default layout needs no environment-variable command. Keep paths relative to the documented working directory, or configure them explicitly for external inputs. Notebook 02's export location is configured through its Python `OUTPUT_DIR` parameter.
+
+## Optional report figure exports
+
+Notebooks 03/04 retain inline plots and can additionally save selected existing maps to `evidence/`. No new maps or statistical methods are introduced. Set `EXPORT_FIGURES = True` in the relevant input cell before an authorised manual run; the default `False` performs no image writes. `FIGURE_DIR` defaults to `../evidence` from `notebooks/` and can be configured through `COMP1890_FIGURE_DIR`.
+
+Existing images raise `FileExistsError` unless `OVERWRITE_FIGURES = True`; inspect files before explicitly replacing them. Output uses 300 dpi PNG with a tight bounding box. See [export filenames, source cells and caption guidance](../evidence/README.md). Saved inline outputs predate the export-code update; no new run or exported-image review is implied. Final attribution and report-layout checks remain pending.
 
 ## Synthetic checks
 
