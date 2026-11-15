@@ -13,13 +13,13 @@ Investigate the spatial concentration of reported pedestrian injury collisions w
 | SQ2 | Which local concentrations, if any, are statistically significant under the selected spatial test? |
 | SQ3 | How sensitive are the identified concentrations to one alternative spatial-analysis setting? |
 
-SQ1 provides the descriptive component of the main question. Grid-based counts and Getis–Ord Gi* are provisional approaches, with one alternative grid size or neighbourhood setting proposed for SQ3. Final method selection requires justification against the teaching material; any significance result must be interpreted under the selected test's null hypothesis and assumptions.
+SQ1 provides the descriptive component of the main question. The approved inference design uses a 500 m main grid and a 250 m sensitivity grid with an area-based neighbourhood count test; this is not standard Getis–Ord Gi*. Notebook 04 has saved results and visually inspected maps; alignment of this inferential extension with the taught-method requirement remains to be confirmed.
 
 ### Scope and status
 
-The approved study frame is Croydon, 2022–2025, using the Office for National Statistics (ONS) December 2024 footprint as a fixed reference geography. This does not assert that historical boundaries were identical in every year. No predictive model training is planned; grid size, neighbourhood weights and hotspot statistic remain undecided.
+The approved study frame is Croydon, 2022–2025, using the Office for National Statistics (ONS) December 2024 footprint as a fixed reference geography. This does not assert that historical boundaries were identical in every year. No predictive model training is planned. The approved inference settings are a 500 m main grid, a 250 m sensitivity grid, binary 850 m full-square-centre neighbourhoods including the focal cell, binomial upper-tail tests and Benjamini–Yekutieli correction at 5% separately per grid.
 
-The merged notebook has saved execution results for all 14 code cells, including four EDA figures, with no saved errors. Preparation reports 74,682 national candidates, including 17,596 recorded-London and 17 Heathrow-coded collisions, without imputing values or deleting repeated locations. Notebook 02 records resolved London membership under the December 2024 boundaries. Notebook 03 has saved execution counts 1–6 without errors and reproduces 792 Croydon collisions across all three grids. Reporting-comparability assessment, coordinate agreement and hotspot method remain pending.
+The merged notebook has saved execution results for all 14 code cells, including four EDA figures, with no saved errors. Preparation reports 74,682 national candidates, including 17,596 recorded-London and 17 Heathrow-coded collisions, without imputing values or deleting repeated locations. Notebook 02 records resolved London membership under the December 2024 boundaries. Notebook 03 has saved execution counts 1–6 without errors and reproduces 792 Croydon collisions across all three grids. Notebook 04 has eight saved code-cell execution counts 1–8 with no saved error outputs. Its tables and regenerated two-panel figure, including the corrected focal-cell legend, have been inspected. Reporting-comparability assessment, coordinate agreement and teaching-alignment confirmation remain pending; sequential counts alone do not independently establish a fresh-kernel run.
 
 ### Approved study-area rationale
 
@@ -33,9 +33,9 @@ The merged notebook has saved execution results for all 14 code cells, including
 
 **Period rationale:** 2022–2025 uses the four supplied annual input pairs and pools events for spatial description. Notebook 03 retains annual counts and records reporting/schema limitations, including the gradual transition to the 2024 STATS19 specification ([R19](references.md#r19)). Annual count variation alone cannot establish reporting comparability or explain a change.
 
-The approved next step compares 100 m, 250 m and 500 m grids descriptively, anchored at the common British National Grid origin (0, 0). Retain every positive-area intersection with the footprint, including zero-count and partial cells, and assign each event once using half-open grid intervals. The 100 m and 250 m grids each nest within 500 m, but not within each other; unequal clipped areas must inform later inference choices.
+The completed descriptive step compares 100 m, 250 m and 500 m grids, anchored at the common British National Grid origin (0, 0). Retain every positive-area intersection with the footprint, including zero-count and partial cells, and assign each event once using half-open grid intervals. The 100 m and 250 m grids each nest within 500 m, but not within each other; unequal clipped areas must inform later inference choices.
 
-Grid size, neighbourhood weights, local statistic, null hypothesis, multiple-testing procedure and one sensitivity setting require a later decision. No significance tests or automatic grid selection are included in notebook 03. Historical boundary research remains necessary for any claim of unchanged historical boundaries, rather than a prerequisite for this explicitly fixed-footprint design.
+Notebook 03 contains no significance tests or automatic grid selection. The subsequent approved design and its saved results are documented under [Croydon spatial inference](#croydon-spatial-inference); ordinary shuffled-count permutations and standard Gi* p-values are not used. Historical boundary research remains necessary for any claim of unchanged historical boundaries, rather than a prerequisite for this explicitly fixed-footprint design.
 
 **Draft report wording:** “Croydon was selected purposively because the varied local character recognised in its planning policy provides a relevant setting for examining within-borough concentrations of reported pedestrian injury collisions. The study uses 2022–2025 records within a fixed December 2024 footprint. Other boroughs may also be suitable, and the study does not claim that Croydon represents London as a whole.”
 
@@ -64,9 +64,11 @@ Eight screenshots are stored locally in ignored `data/screenshots/`; they are no
 ├── notebooks/
 │   ├── 01_data_understanding_preparation.ipynb  # Executed inspection, EDA and preparation
 │   ├── 02_spatial_validation.ipynb              # Executed validation and Python inspection maps
-│   └── 03_croydon_grid_comparison.ipynb          # Executed Croydon selection and descriptive grids
+│   ├── 03_croydon_grid_comparison.ipynb          # Executed Croydon selection and descriptive grids
+│   └── 04_croydon_spatial_inference.ipynb        # Saved inference results and sensitivity maps
 ├── tests/
-│   └── test_grid_comparison.py                 # Synthetic grid checks; no real-data loading
+│   ├── test_grid_comparison.py                 # Synthetic grid checks; no real-data loading
+│   └── test_spatial_inference.py               # Synthetic numerical and neighbourhood checks
 └── COMP1890_Spatial_Data_Science/     # Local coursework reference material
 ```
 
@@ -99,7 +101,7 @@ The [reference register](references.md) records methodological sources, lecture 
 
 The saved validation run checks London boundaries and point membership and includes context and diagnostic maps. All 33 district codes and names reconcile with the guide, polygon-validity safeguards pass and no positive-area district overlaps are reported. The [December 2024 ONS BFE product](references.md#r05) remains subject to temporal-suitability review for the final period.
 
-Use full-resolution boundaries for membership and distinguish interior, boundary, multiple-match and unmatched cases. Keep ambiguous cases auditable rather than automatically assigning the nearest borough, and document the datum and transformation before evaluating coordinate agreement. Grid settings, the final local statistic and multiple-testing treatment remain later decisions; see [validation references](references.md#r07) and [lecture alignment](references.md#r12).
+Use full-resolution boundaries for membership and distinguish interior, boundary, multiple-match and unmatched cases. Keep ambiguous cases auditable rather than automatically assigning the nearest borough, and document the datum and transformation before evaluating coordinate agreement. The subsequent approved inference design is described below; see [validation references](references.md#r07) and [lecture alignment](references.md#r12).
 
 ### Acquire the candidate boundary input
 
@@ -145,7 +147,7 @@ British National Grid remains the analysis coordinate representation; the longit
 
 In VS Code, open notebook 03, select the existing project `.venv` kernel, restart, run all cells in order and save. Use `notebooks/` as the working directory; the default inputs are `../data`, including the existing `derived/spatial_validation_closure/` exports. Optional `COMP1890_DATA_DIR`, `COMP1890_VALIDATION_DIR` and `COMP1890_BOUNDARY_PATH` settings support other input locations; no environment-variable command is required for the documented layout.
 
-The notebook checks the saved annual baseline (190, 200, 180 and 222 events) and stops on discrepancies rather than forcing a result. It produces in-memory tables and figures without downloads, data exports or changes to existing validation artifacts. The saved run reproduces 792 events (190 / 200 / 180 / 222 annually) in every grid. The 100 m / 250 m / 500 m grids contain 9,006 / 1,520 / 415 cells, with 94.1% / 76.9% / 55.4% zero-count cells and 20 / 41 / 74 events in partial cells. No grid is selected; count maps do not estimate pedestrian risk, and sequential execution counts alone do not independently establish a fresh-kernel run.
+The notebook checks the saved annual baseline (190, 200, 180 and 222 events) and stops on discrepancies rather than forcing a result. It produces in-memory tables and figures without downloads, data exports or changes to existing validation artifacts. The saved run reproduces 792 events (190 / 200 / 180 / 222 annually) in every grid. The 100 m / 250 m / 500 m grids contain 9,006 / 1,520 / 415 cells, with 94.1% / 76.9% / 55.4% zero-count cells and 20 / 41 / 74 events in partial cells. Notebook 03 does not select a grid; the subsequent 500 m main-grid decision is implemented separately in notebook 04. Count maps do not estimate pedestrian risk, and sequential execution counts alone do not independently establish a fresh-kernel run.
 
 With the documented project environment active, run the synthetic checks from the repository root:
 
@@ -153,7 +155,23 @@ With the documented project environment active, run the synthetic checks from th
 python -m unittest discover -s tests -v
 ```
 
-These tests extract only the notebook’s pure grid functions and use synthetic geometries to check unique assignment, zero cells, clipped areas, holes, grid origins, summary denominators and invalid inputs. They do not execute notebook input cells, verify real-data provenance or establish the final figures’ readability.
+These tests extract only pure function definitions from notebooks 03 and 04. Synthetic checks cover grid assignment and clipping, fixed-centre neighbourhoods, binomial tails against hand calculations and an independent high-precision oracle, BY correction, area-based expectations and focal-cell overlap. They do not execute notebook input cells, verify real-data provenance, validate the spatial null or establish final map readability.
+
+## Croydon spatial inference
+
+[04_croydon_spatial_inference.ipynb](notebooks/04_croydon_spatial_inference.ipynb) has eight code cells with saved execution counts 1–8 and no saved error outputs. The saved tables and regenerated two-panel figure have been inspected, including the corrected focal-cell legend; execution counts alone do not independently establish a fresh-kernel run. Use `notebooks/` as the working directory and select the existing project environment. It independently reproduces notebook 03's input checks, collision selection and grid rules; notebook 03 does not need to execute first or share a kernel.
+
+The approved main grid is 500 m, with 250 m as the single sensitivity setting. Both use binary membership for retained full-square centres within 850 m, including the focal cell, and retain all positive-area clips and zero-count cells. At interior locations this covers nine full cells at 500 m and 37 at 250 m; the common distance rule does not imply identical stepped windows, centres or multiplicity. The exploratory distance is fixed before significance calculation, not estimated from a collision process.
+
+Conditional on the selected event total, the null places events independently and uniformly over the fixed footprint. Each neighbourhood count is binomial with probability equal to its clipped area share; calculate the upper tail directly and apply Benjamini–Yekutieli (BY) correction at a 5% false discovery rate across every retained cell separately for each grid. No permutations, Monte Carlo runs, predictive fitting or new dependencies are required. Numerical probability calculations and BY correction use log space; table probability columns have a labelled display floor, while decisions use unfloored log probabilities.
+
+Saved outputs include neighbourhood observed/expected counts, excess counts and ratios, corrected significance maps, flagged focal-cell area and event totals, and geometric overlap between the grids. A shaded focal cell locates a neighbourhood test; it is not a test of that cell alone. Event summaries count unique assignments in flagged focal cells, not overlapping neighbourhood sums; overlap ratios with zero denominators remain missing. The sensitivity analysis is robustness evidence, not a second primary discovery set, and separate BY correction does not provide joint control across both grids.
+
+This is an **area-based neighbourhood count test**, not standard Getis–Ord Gi*. Uniform land-area intensity does not model roads, junctions, pedestrian exposure or event dependence, and edge windows exclude events outside the footprint. Reporting comparability, coordinate-representation agreement, product-specific map attribution and confirmation of teaching alignment remain outstanding; adding another statistic would not itself resolve that last requirement. See [R20–R21](references.md#r20) for the probability calculation and multiple-testing sources.
+
+For an authorised manual run, open notebook 04, select the project environment, restart the kernel, run cells in order and save. The code reads and hashes the supplied inputs and calculates tables and maps in memory, without downloading or exporting data.
+
+The current saved run reproduces all 792 collisions at both resolutions: 74 of 415 focal cells are flagged at 500 m (17.39 km²; 495 collisions), compared with 276 of 1,520 at 250 m (16.69 km²; 459 collisions). Flagged areas overlap by 14.93 km², with 77.9% intersection-over-union and 85.8% of the primary flagged area reproduced at 250 m. The visually inspected maps show a broadly consistent northern concentration with differences in smaller patches; these are results under the uniform-area baseline, not pedestrian-risk estimates.
 
 ### Reproduce the ignored inputs
 
@@ -169,7 +187,7 @@ The acquisition script is for initial acquisition and refuses an existing bounda
 
 ## Environment and execution
 
-Use Python 3.12; local setup was checked with Python 3.12.3. `requirements.txt` pins the direct dependencies used by the three notebooks. Transitive dependencies are not locked. The repository-root `.venv` contains the installed spatial packages, whose versions match the saved validation run; the installed NumPy version is also pinned.
+Use Python 3.12; local setup was checked with Python 3.12.3. `requirements.txt` pins the direct dependencies used by the four notebooks; notebook 04 adds no dependency. Transitive dependencies are not locked. The repository-root `.venv` contains the installed spatial packages, whose versions match the saved validation run; the installed NumPy version is also pinned.
 
 To reproduce the setup on Ubuntu/WSL, start from the repository root. Create the environment only if it does not already exist:
 

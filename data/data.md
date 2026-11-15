@@ -53,7 +53,7 @@ Originals remain unchanged and derived outputs are stored separately with prepar
 
 **Saved London quality results:** the evaluated date, ID-composition, district and grid/longitude-latitude range flags are zero for the recorded-London subset. Its repeated-grid flags affect 16 records within years and 66 in the pooled-national comparison, with all events retained. These counts describe flagged records rather than distinct location pairs and do not establish positional accuracy.
 
-**Remaining spatial checks:** preparation-stage spatial flags remain `not_checked`; notebook 02 supplies later London membership evidence, while coordinate-representation agreement remains unperformed. Croydon and 2022–2025 are approved using the December 2024 footprint as fixed geography; notebook 03 applies that study frame without claiming historically identical boundaries. The final hotspot method must align with lecture material.
+**Remaining spatial checks:** preparation-stage spatial flags remain `not_checked`; notebook 02 supplies later London membership evidence, while coordinate-representation agreement remains unperformed. Croydon and 2022–2025 are approved using the December 2024 footprint as fixed geography; notebook 03 applies that study frame without claiming historically identical boundaries. The approved neighbourhood-count inference design is implemented in notebook 04 with saved results; acceptance of this extension under the taught-method requirement remains to be confirmed.
 
 ## Preparation rules and derived candidates
 
@@ -99,7 +99,17 @@ Keep longitude/latitude agreement explicitly unperformed while using the documen
 
 The saved 100 m / 250 m / 500 m grids retain 9,006 / 1,520 / 415 cells and count all 792 events at each size. Zero-count shares are 94.1% / 76.9% / 55.4%, while partial cells contain 20 / 41 / 74 events. These are descriptive results, and sequential execution counts alone do not independently establish a fresh-kernel run.
 
-The descriptive comparison uses 100 m, 250 m and 500 m grids anchored at British National Grid (0, 0), retains all positive-area footprint intersections and zero-count cells, and assigns each collision exactly once. Partial-cell areas and their event totals are reported to expose unequal support; no final grid or local statistic is selected. Reporting changes under the 2024 STATS19 specification remain a limitation to assess ([R19](../references.md#r19)); a serious/slight reclassification alone does not change eligibility when all injury severities are included, but this does not establish complete or constant reporting.
+The descriptive comparison uses 100 m, 250 m and 500 m grids anchored at British National Grid (0, 0), retains all positive-area footprint intersections and zero-count cells, and assigns each collision exactly once. Partial-cell areas and their event totals are reported to expose unequal support; notebook 03 does not select a final grid or local statistic. Reporting changes under the 2024 STATS19 specification remain a limitation to assess ([R19](../references.md#r19)); a serious/slight reclassification alone does not change eligibility when all injury severities are included, but this does not establish complete or constant reporting.
+
+## Spatial-inference results and limitations
+
+[04_croydon_spatial_inference.ipynb](../notebooks/04_croydon_spatial_inference.ipynb) has saved results for the approved 500 m main and 250 m sensitivity analyses, with eight saved code-cell execution counts 1–8 and no saved error outputs. The tables and regenerated two-panel figure, including the corrected focal-cell legend, have been inspected; counts alone do not independently establish a fresh-kernel run. It reproduces notebook 03's hash and selection safeguards from the same supplied inputs, including the original boundary, rather than relying on an earlier kernel. No new source dataset, download, data export or correction of original records is introduced.
+
+Both grids retain all positive-area intersections and zeros, with binary 850 m full-square-centre neighbourhoods including the focal cell. Under independent uniform event placement conditional on the selected total, neighbourhood counts have binomial upper tails based on clipped area shares; BY correction is applied across all cells separately per grid. The model is a land-area benchmark, not road availability, pedestrian exposure or a realistic collision-generating process; it is not standard Gi*.
+
+The saved results count 792 collisions at both sizes and flag 74 of 415 focal cells at 500 m (17.39 km²; 495 collisions) and 276 of 1,520 at 250 m (16.69 km²; 459 collisions). Flagged focal-cell areas overlap by 14.93 km², with 77.9% intersection-over-union and 85.8% of the primary flagged area reproduced at 250 m. The inspected maps show a broadly consistent northern concentration, with differences in smaller patches.
+
+Synthetic numerical and geometric tests do not verify original-data provenance or establish the validity of the null. Reporting comparability, coordinate-representation agreement, teaching alignment and final map attribution remain outstanding; see [README](../README.md#croydon-spatial-inference) and [R20–R21](../references.md#r20).
 
 ## Attribution and reuse
 
